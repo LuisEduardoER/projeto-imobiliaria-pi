@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral">  
+                    <p:dialog header="Pesquisa de Cidade" widgetVar="dlg" resizable="false" appendToBody="true">
+                        <h:form id="form_modal">
+                            <h:panelGrid columns="3">
+                                <h:outputText value="Cidade: " />
+                                <p:inputText id="cidade" value="#{bairroControle.municipio.nome}"/>
+                                <p:commandButton value="Pesquisar" image="ui-icon-search" update="@form" actionListener="#{bairroControle.pesquisaMunicipio()}" />
+                            </h:panelGrid>
+
+                            <p:dataTable id="gridCidade" value="#{bairroControle.modelMunicipio}" var="cidadeGrid" paginator="true" rows="5" emptyMessage="Nenhum valor encontrado">
+                                <f:facet name="header">
+                                    <h:outputText value="Listando Cidade(s)"/>
+                                </f:facet>
+                                <p:column>
+                                    <f:facet name="header">Cidade</f:facet>
+                                    <h:outputText value="#{cidadeGrid.nome}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Estado</f:facet>
+                                    <h:outputText value="#{cidadeGrid.estado.nome}" />
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton icon="ui-icon-check" title="Selecione um Municipio" ajax="false" action="#{bairroControle.carregaMunicipio()}" onclick="dlg.hide();"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </p:dialog>
+
+                    <h:form>
+                        <h:panelGrid columns="3">
+                            <h:outputText value="Municipio: "/>
+                            <p:inputText value="#{bairroControle.municipio.nome}" readonly="true" onclick="dlg.show();"/>
+                            <p:commandButton value="Pesquisar" image="ui-icon-search" title="pesquisa municipio" oncomplete="dlg.show();"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Bairro: " />
+                            <p:inputText id="nome" value="#{bairroControle.bairro.nome}" />
+                        </h:panelGrid><br></br>
+                        <p:commandButton value="Salvar" image="ui-icon-disk" action="#{bairroControle.salvar()}" ajax="false"/>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

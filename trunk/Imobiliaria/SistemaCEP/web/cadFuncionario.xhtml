@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral">
+                    <p:fieldset legend="Cadastro Funcionário" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
+                    <h:form id="formCad">
+                        <h:panelGrid style="margin-bottom: 20px;" columns="2">
+                            <h:outputLabel value="Nome:" />
+                            <p:inputText id="nome" 
+                                         value="#{funcionarioControle.funcionario.nome}" 
+                                         required="true" requiredMessage="nome é obrigatório" style="margin-left: 45px;"/>
+                            
+                            <h:outputText value="Data de nascimento:" />   
+                            <p:calendar value="#{funcionarioControle.funcionario.nascimento}" locale="pt_BR" showButtonPanel="true" navigator="true" id="nascimento" style="margin-left: 45px;"/>
+                            
+                            <h:outputLabel value="Sexo:" />
+                            <p:selectOneRadio id="options" 
+                                              value="#{funcionarioControle.funcionario.sexo}" 
+                                              required="true" requiredMessage="sexo é obrigatório"  style="margin-left: 45px;">
+                                <f:selectItem itemLabel="Feminino" itemValue="feminino" />
+                                <f:selectItem itemLabel="Masculino" itemValue="masculino" />
+                            </p:selectOneRadio>
+                            
+                            <h:outputLabel value="CPF:" />                    
+                            <p:inputMask id="cpf" mask="999.999.999-99"
+                                         value="#{funcionarioControle.funcionario.cpf}" 
+                                         required="true" requiredMessage="cpf é obrigatório"  style="margin-left: 45px;"/>
+                            
+                            <h:outputLabel value="RG:" />
+                            <p:inputText id="rg" 
+                                         value="#{funcionarioControle.funcionario.rg}" 
+                                         required="true" requiredMessage="rg é obrigatório" style="margin-left: 45px;"/>
+                            
+                            <h:outputLabel value="Telefone:" />
+                            <p:inputMask value="#{funcionarioControle.funcionario.telefone}" mask="(99) 9999-9999" required="true" requiredMessage="telefone é obrigatório" style="margin-left: 45px;"/>  
+                            
+                            <h:outputLabel value="Celular:" />
+                            <p:inputMask value="#{funcionarioControle.funcionario.celular}" mask="(99) 9999-9999" required="true" requiredMessage="telefone é obrigatório" style="margin-left: 45px;"/>  
+                            
+                            <h:outputLabel value="E-mail:" />
+                            <p:inputText id="email" 
+                                         value="#{funcionarioControle.funcionario.email}" 
+                                         required="true" requiredMessage="email é obrigatório" style="margin-left: 45px;"/>
+                            
+                            <h:outputLabel value="Cresci:" />
+                            <p:inputText id="cresci" 
+                                         value="#{funcionarioControle.funcionario.cresci}" 
+                                         required="true" requiredMessage="cresci é obrigatório" style="margin-left: 45px;"/>
+                            
+                            <h:outputLabel value="Salário" />
+                            <p:inputText id="salario" 
+                                         value="#{funcionarioControle.funcionario.salario}" 
+                                         required="true" requiredMessage="salário é obrigatório" style="margin-left: 45px;"/>
+                            
+                            <h:outputText value="Função: " />
+                            <p:selectOneMenu id="idFuncao" style="margin-left: 45px;" value="#{funcionarioControle.funcao.id}">
+                                <f:selectItem itemLabel="Selecione" itemValue="" />
+                                <f:selectItems value="#{funcionarioControle.todasFuncoes}" />
+                            </p:selectOneMenu>
+                            <p:message for="idFuncao"/>
+                            
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3">
+                            <h:outputLabel value="Cep:" />
+                            <p:inputMask id="cep" mask="99999999" value="#{funcionarioControle.cep.cep}"  style="margin-left: 80px;" required="true" requiredMessage="cep é obrigatório" />
+                            <p:commandButton value="Pesquisar" update="panelEnd" process="@this,cep"  style="margin-left: 20px;" action="#{funcionarioControle.pesquisaCep()}" />
+                        </h:panelGrid>
+
+                        <h:panelGrid id="panelEnd" columns="2">
+                            <h:outputLabel value="Logradouro:" />
+                            <p:inputText id="log" 
+                                         value="#{funcionarioControle.cep.logradouro}" 
+                                         style="margin-left: 10px;" readonly="true" required="true" requiredMessage="logradouro é obrigatório" />
+
+                            <h:outputLabel value="Número:" />
+                            <p:inputText id="num" 
+                                         value="#{funcionarioControle.endereco.numero}" 
+                                         style="margin-left: 10px;" required="true" requiredMessage="numero é obrigatório" />
+
+                            <h:outputLabel value="Complemento:" />
+                            <p:inputText id="comp" 
+                                         value="#{funcionarioControle.endereco.complemento}" 
+                                         style="margin-left: 10px;" required="true" requiredMessage="cracha é obrigatório" />
+
+                            <h:outputLabel value="Bairro:" />
+                            <p:inputText id="bairro" 
+                                         value="#{funcionarioControle.cep.bairro.nome}" 
+                                         style="margin-left: 10px;" readonly="true" required="true" requiredMessage="bairro é obrigatório" />
+
+                            <h:outputLabel value="Município:" />
+                            <p:inputText id="mun" 
+                                         value="#{funcionarioControle.cep.bairro.municipio.nome}" 
+                                         style="margin-left: 10px;" readonly="true" required="true" requiredMessage="municipio é obrigatório" />
+
+                            <h:outputLabel value="Sigla:" />
+                            <p:inputText id="sigla" 
+                                         value="#{funcionarioControle.cep.bairro.municipio.estado.sigla}" 
+                                         style="margin-left: 10px;" readonly="true" required="true" requiredMessage="cracha é obrigatório" />
+                        </h:panelGrid>
+                        <p:commandButton value="Salvar" ajax="false" action="#{funcionarioControle.salvar()}" style=" margin:25px 0 20px 190px" />
+                    </h:form>
+                    </p:fieldset>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
