@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral">  
+                    <h:form id="formPesqFuncao">
+                        <h1>Pesquisar Função</h1>
+                        <h:panelGrid style="margin-bottom: 50px;" columns="3">
+                            <h:outputLabel value="Nome" />
+                            <p:inputText id="nome" value="#{funcaoControle.funcao.nome}" />
+                            <p:commandButton value="Pesquisar" ajax="false" action="#{funcaoControle.pesquisaFuncao()}" />
+                        </h:panelGrid>
+                        <p:dataTable id="gridEstadi" var="funcaoGrid" paginator="true"  emptyMessage="Nenhum valor encontrado" value="#{funcaoControle.model}">
+                            <f:facet name="header">
+                                <h2>Excluir</h2>
+                                <h:outputText value="Listando Funções" />
+                            </f:facet>
+                            <p:column>
+                                <f:facet name="header">Nome: </f:facet>
+                                <h:outputText value="#{funcaoGrid.nome}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Descrição </f:facet>
+                                <h:outputText value="#{funcaoGrid.descricao}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Excluir </f:facet>
+                                <h:commandLink action="#{funcaoControle.excluir()}" value="Excluir"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
