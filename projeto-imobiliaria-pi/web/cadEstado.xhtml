@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral">  
+                    <h:form id="formCadEstado">
+                        <h1>Cadastrar Estado</h1>
+                        <h:panelGrid style="margin-bottom: 50px;" columns="3">
+                            <h:outputLabel value="Nome" />
+                            <p:inputText id="nome" value="#{estadoControle.estado.nome}" rendered="true" requiredMessage="Nome Obrigatório"/>
+                            <p:message for="nome"/>
+                            <h:outputLabel value="Sigla" />
+                            <p:inputMask id="sigla" mask="aa" value="#{estadoControle.estado.sigla}" rendered="true" requiredMessage="Sigla Obrigatório"/>
+                            <p:message for="sigla"/>
+                            <p:commandButton value="Cadastrar" ajax="false" action="#{estadoControle.salvar()}" style="margin-top: 20px;"/>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

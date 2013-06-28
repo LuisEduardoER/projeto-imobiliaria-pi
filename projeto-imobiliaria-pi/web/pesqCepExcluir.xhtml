@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral">  
+                    <h:form id="formPesqCep">
+                        <h1>Pesquisar Ceps</h1>
+                        <h:panelGrid style="margin-bottom: 50px;" columns="4">
+                            <h:outputLabel value="Rua: " />
+                            <p:inputText  id="logradouro" value="#{cepControle.cep.logradouro}" />
+                            <p:commandButton value="Pesquisar" ajax="false" action="#{cepControle.pesquisaCepLogradouro()}" />
+                        </h:panelGrid>
+                        <p:dataTable id="gridCep" var="cepGrid" paginator="true"  emptyMessage="Nenhum valor encontrado" value="#{cepControle.model}">
+                            <f:facet name="header">
+                                <h2>Alterar</h2>
+                                <h:outputText value="Listando Ceps" />
+                            </f:facet>
+                            <p:column>
+                                <f:facet name="header">Cep: </f:facet>
+                                <h:outputText value="#{cepGrid.cep}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Logradouro: </f:facet>
+                                <h:outputText value="#{cepGrid.logradouro}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Bairro: </f:facet>
+                                <h:outputText value="#{cepGrid.bairro.nome}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Municipio: </f:facet>
+                                <h:outputText value="#{cepGrid.bairro.municipio.nome}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Excluir</f:facet>
+                                <h:commandLink action="#{cepControle.excluir()}" value="Excluir"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
