@@ -7,15 +7,12 @@ package br.com.cep.controle;
 import br.com.cep.dao.EstadoDAO;
 import br.com.cep.dao.EstadoDAOImp;
 import br.com.cep.entidade.Estado;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import org.apache.jasper.tagplugins.jstl.core.Catch;
 
 /**
  *
