@@ -17,12 +17,12 @@
                         <h1>Pesquisar Tipo de Imóvel</h1>
                         <h:panelGrid style="margin-bottom: 50px;" columns="3">
                             <h:outputLabel value="Tipo" />
-                            <p:inputText id="tipo" value="#{tipoImovelControle.tipo.tipo}" />
+                            <p:inputText id="tipo" value="#{tipoImovelControle.tipoImovel.tipo}" />
                             <p:commandButton value="Pesquisar" ajax="false" action="#{tipoImovelControle.pesquisaTipo()}" />
                         </h:panelGrid>
                         <p:dataTable id="gridTipo" var="tipoGrid" paginator="true"  emptyMessage="Nenhum valor encontrado" value="#{tipoImovelControle.model}">
                             <f:facet name="header">
-                                <h2>Alterar</h2>
+                                <h2>Excluir</h2>
                                 <h:outputText value="Listando Tipos de Imóveis" />
                             </f:facet>
                             <p:column>
@@ -35,7 +35,7 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">Alterar</f:facet>
-                                <h:commandLink action="#{tipoImovelControle.excluir()}" value="Alterar"/>
+                                <h:commandLink action="#{tipoImovelControle.excluir()}" value="Excluir"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>

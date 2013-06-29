@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral"> 
+                    <p:fieldset legend="Cadastro de Status" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
+                    <h:form id="formCadStatus">
+                        <h:panelGrid style="margin-bottom: 50px;" columns="3">
+                            <h:outputLabel value="Status:" />
+                            <p:inputText id="status" value="#{statusControle.status.status}"  rendered="true" requiredMessage="Status Obrigatório"/>
+                            <p:message for="status"/>
+                            <p:commandButton value="Cadastrar" ajax="false" action="#{statusControle.salvar()}" style="margin-top: 20px;"/>
+                        </h:panelGrid>
+                    </h:form>
+                    </p:fieldset>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

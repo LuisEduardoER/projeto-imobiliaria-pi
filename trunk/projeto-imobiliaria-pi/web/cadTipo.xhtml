@@ -17,10 +17,10 @@
                         <h1>Cadastrar Tipo de Imóvel</h1>
                         <h:panelGrid style="margin-bottom: 50px;" columns="3">
                             <h:outputLabel value="Tipo" />
-                            <p:inputText id="tipo" value="#{tipoImovelControle.tipo.tipo}" rendered="true" requiredMessage="Tipo Obrigatório"/>
+                            <p:inputText id="tipo" value="#{tipoImovelControle.tipoImovel.tipo}" rendered="true" requiredMessage="Tipo Obrigatório"/>
                             <p:message for="tipo"/>
                             <h:outputLabel value="Descrição" />
-                            <p:inputText id="descricao" value="#{tipoImovelControle.tipo.descricao}" rendered="true" requiredMessage="Descrição Obrigatório"/>
+                            <p:inputText id="descricao" value="#{tipoImovelControle.tipoImovel.descricao}" rendered="true" requiredMessage="Descrição Obrigatório"/>
                             <p:message for="descricao"/>
                             <p:commandButton value="Cadastrar" ajax="false" action="#{tipoImovelControle.salvar()}" style="margin-top: 20px;"/>
                         </h:panelGrid>
