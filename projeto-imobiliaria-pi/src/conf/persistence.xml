@@ -15,6 +15,8 @@
     <class>br.com.cep.entidade.Pessoa</class>
     <class>br.com.cep.entidade.Funcao</class>
     <class>br.com.cep.entidade.TipoImovel</class>
+    <class>br.com.cep.entidade.Cliente</class>
+    <class>br.com.cep.entidade.Status</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.connection.username" value="root"/>

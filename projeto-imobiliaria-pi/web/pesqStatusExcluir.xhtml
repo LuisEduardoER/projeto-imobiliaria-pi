@@ -13,29 +13,25 @@
         <ui:composition template="./index.xhtml">
             <ui:define name="center">
                 <div id="geral">  
-                    <h:form id="formPesqTipo">
-                        <h1>Pesquisar Tipo de Imóvel</h1>
+                    <h:form id="formStatusFuncao">
+                        <h1>Pesquisar Status</h1>
                         <h:panelGrid style="margin-bottom: 50px;" columns="3">
-                            <h:outputLabel value="Tipo" />
-                            <p:inputText id="tipo" value="#{tipoImovelControle.tipoImovel.tipo}" />
-                            <p:commandButton value="Pesquisar" ajax="false" action="#{tipoImovelControle.pesquisaTipo()}" />
+                            <h:outputLabel value="Status" />
+                            <p:inputText id="status" value="#{statusControle.status.status}" />
+                            <p:commandButton value="Pesquisar" ajax="false" action="#{statusControle.pesquisaStatus()}" />
                         </h:panelGrid>
-                        <p:dataTable id="gridTipo" var="tipoGrid" paginator="true"  emptyMessage="Nenhum valor encontrado" value="#{tipoImovelControle.model}">
+                        <p:dataTable id="gridStatus" var="statusGrid" paginator="true"  emptyMessage="Nenhum valor encontrado" value="#{statusControle.model}">
                             <f:facet name="header">
                                 <h2>Excluir</h2>
-                                <h:outputText value="Listando Tipos de Imóveis" />
+                                <h:outputText value="Listando Status" />
                             </f:facet>
                             <p:column>
-                                <f:facet name="header">Tipo: </f:facet>
-                                <h:outputText value="#{tipoGrid.tipo}" />
+                                <f:facet name="header">Status: </f:facet>
+                                <h:outputText value="#{statusGrid.status}" />
                             </p:column>
                             <p:column>
-                                <f:facet name="header">Descrição: </f:facet>
-                                <h:outputText value="#{tipoGrid.descricao}" />
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Alterar</f:facet>
-                                <h:commandLink action="#{tipoImovelControle.excluir()}" value="Excluir"/>
+                                <f:facet name="header">Alterar </f:facet>
+                                <h:commandLink action="#{statusControle.excluir()}" value="Excluir"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>

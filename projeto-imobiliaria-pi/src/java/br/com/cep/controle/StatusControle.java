@@ -4,9 +4,9 @@
  */
 package br.com.cep.controle;
 
-import br.com.cep.dao.TipoImovelDAO;
-import br.com.cep.dao.TipoImovelDAOImp;
-import br.com.cep.entidade.TipoImovel;
+import br.com.cep.dao.StatusDAO;
+import br.com.cep.dao.StatusDAOImp;
+import br.com.cep.entidade.Status;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -20,9 +20,9 @@ import javax.faces.model.ListDataModel;
  */
 @ManagedBean
 @SessionScoped
-public class TipoImovelControle {
-    private TipoImovel tipo;
-    private TipoImovelDAO tipoDao;
+public class StatusControle {
+    private Status status;
+    private StatusDAO statusDao;
     private DataModel model;
     private boolean pesquisa = false;
 
@@ -30,15 +30,15 @@ public class TipoImovelControle {
         return model;
     }
 
-    public TipoImovel getTipoImovel() {
-        if(tipo == null){
-            tipo = new TipoImovel();
+    public Status getStatus() {
+        if(status == null){
+            status = new Status();
         }
-        return tipo;
+        return status;
     }
 
-    public void setTipoImovel(TipoImovel tipo) {
-        this.tipo = tipo;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public boolean isPesquisa() {
@@ -50,47 +50,47 @@ public class TipoImovelControle {
     }
     
     public String salvar(){
-        tipoDao = new TipoImovelDAOImp();
+        statusDao = new StatusDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
             try {
-                if(tipo.getId() == null){
-                    tipoDao.salva(tipo);
+                if(status.getId() == null){
+                    statusDao.salva(status);
                     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvo com Sucesso!", ""));
                 }else{
-                   tipoDao.altera(tipo); 
+                   statusDao.altera(status); 
                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Alterado com Sucesso!", ""));
                 }
             } catch (Exception ex) {
-                System.out.println("Erro ao salvar Tipo de Imóvel" + ex.getMessage());
+                System.out.println("Erro ao salvar status" + ex.getMessage());
             }
         limpa();
         return "index";
     }
     
     public String pesquisar() {
-        if(tipo != null) {
+        if(status != null) {
             limpa();
             model = null;
         }
         pesquisa = false;
-        return "pesqTipoAlterar";
+        return "pesqStatusAlterar";
     }
     
     public String pesquisarExcluir() {
-        if(tipo != null) {
+        if(status != null) {
             limpa();
             model = null;
         }
         pesquisa = false;
-        return "pesqTipoExcluir";
+        return "pesqStatusExcluir";
     }
     
     public String excluir(){
         FacesContext context = FacesContext.getCurrentInstance();
-        tipo = (TipoImovel) model.getRowData();
-        tipoDao = new TipoImovelDAOImp();
+        status = (Status) model.getRowData();
+        statusDao = new StatusDAOImp();
         try {
-            tipoDao.excluir(tipo);
+            statusDao.excluir(status);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Excluido com Sucesso!", ""));
         } catch (Exception ex) {
                 System.out.println("Erro ao excluir" + ex.getMessage());
@@ -99,29 +99,29 @@ public class TipoImovelControle {
     }
     
     private void limpa() {
-        tipo = null;
+        status = null;
     }
     
-    public String novoTipo() {
-        tipo = new TipoImovel();
+    public String novoStatus() {
+        status = new Status();
         pesquisa = false;
-        return "cadTipo";
+        return "cadStatus";
     }
     
-    public void pesquisaTipo() {
-        tipoDao = new TipoImovelDAOImp();
-        if(tipo.getTipo() != null){
+    public void pesquisaStatus() {
+        statusDao = new StatusDAOImp();
+        if(status.getStatus() != null){
             try {
-            model = new ListDataModel(tipoDao.procuraTipoImovel(tipo.getTipo()));
+            model = new ListDataModel(statusDao.procuraStatusPorStatus(status.getStatus()));
             } catch(Exception ex) {
-                System.out.println("Erro ao pesquisar todos os tipos" + ex.getMessage());
+                System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
             }
         }
     }
     
     public String editar() {
-        tipo = (TipoImovel) model.getRowData();
-        setTipoImovel(tipo);
-        return "cadTipo";
+        status = (Status) model.getRowData();
+        setStatus(status);
+        return "cadStatus";
     }
 }
