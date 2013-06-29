@@ -50,10 +50,6 @@ public class TipoImovelControle {
         return model;
     }
 
-    public void setData(DataModel model) {
-        this.model = model;
-    }
-
     public boolean isPesquisa() {
         return pesquisa;
     }
@@ -120,7 +116,7 @@ public class TipoImovelControle {
         return "cadTipo";
     }
     
-    public void pesquisaEstado() {
+    public void pesquisaTipo() {
         tipoDAO = new TipoImovelDAOImp();
         if(tipo.getTipo() != null){
             try {
