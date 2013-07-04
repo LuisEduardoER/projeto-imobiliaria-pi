@@ -23,16 +23,20 @@
                 <p:menubar style="border: none; padding-left:30px; ">
                     <p:menuitem value="Home" url="index.faces" />
                     <p:submenu label="Cadastro" icon="ui-icon-disk" >
+                        <p:submenu label="Pessoa" icon="ui-icon-arrowreturnthick-1-e"> 
+                            <p:menuitem value="Funcionario" action="#{funcionarioControle.novoFuncionario()}" ajax="false"/>
+                        </p:submenu>
                         <p:submenu label="Endereço" icon="ui-icon-arrowreturnthick-1-e"> 
                             <p:menuitem value="Estado" action="#{estadoControle.novoEstado()}" ajax="false" />
                             <p:menuitem value="Municipio" action="#{municipioControle.novoMunicipio()}" ajax="false" />
                             <p:menuitem value="Bairro" action="#{bairroControle.novoBairro()}" ajax="false" />
                             <p:menuitem value="CEP" action="#{cepControle.novoCep()}" ajax="false" />
                         </p:submenu>
-                        <p:menuitem value="Funcionario" icon="ui-icon-arrowreturnthick-1-e" action="#{funcionarioControle.novoFuncionario()}" ajax="false"/>
+                        <p:submenu label="Imovel" icon="ui-icon-arrowreturnthick-1-e"> 
+                            <p:menuitem value="Tipo de Imóvel" action="#{tipoImovelControle.novoTipo()}" ajax="false"/>
+                            <p:menuitem value="Status " action="#{statusControle.novoStatus()}" ajax="false"/>
+                        </p:submenu>
                         <p:menuitem value="Função" icon="ui-icon-arrowreturnthick-1-e" action="#{funcaoControle.novaFuncao()}" ajax="false"/>
-                        <p:menuitem value="Tipo Imóvel" icon="ui-icon-arrowreturnthick-1-e" action="#{tipoImovelControle.novoTipo()}" ajax="false"/>
-                        <p:menuitem value="Status" icon="ui-icon-arrowreturnthick-1-e" action="#{statusControle.novoStatus()}" ajax="false"/>
                     </p:submenu>
 
                     <p:submenu label="Editar" icon="ui-icon-pencil">
