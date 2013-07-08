@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral"> 
+                    <p:fieldset legend="Cadastro Perfil" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
+                    <h:form id="formCadPerfil">
+                        <h:panelGrid style="margin-bottom: 50px;" columns="3">
+                            <h:outputLabel value="Nome:" />
+                            <p:inputText id="nome" value="#{funcaoPerfil.perfil.nome}"  rendered="true" requiredMessage="Nome Obrigatório"/>
+                            <p:message for="nome"/>
+                            <h:outputLabel value="Descrição:" />
+                            <p:inputTextarea id="descricao" rows="4" cols="30" style="margin-top: 15px;" value="#{funcaoPerfil.perfil.descricao}" rendered="true" requiredMessage="Descriçâo Obrigatório"/>
+                            <p:message for="descricao"/>
+                            <p:commandButton value="Cadastrar" ajax="false" action="#{funcaoPerfil.salvar()}" style="margin-top: 20px;"/>
+                        </h:panelGrid>
+                    </h:form>
+                    </p:fieldset>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
