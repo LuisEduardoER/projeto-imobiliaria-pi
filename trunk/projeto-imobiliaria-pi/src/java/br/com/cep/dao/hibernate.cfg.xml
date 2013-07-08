@@ -16,6 +16,7 @@
     <mapping class="br.com.cep.entidade.Cep"/>
     <mapping class="br.com.cep.entidade.Pessoa"/>
     <mapping class="br.com.cep.entidade.Funcionario"/>
+    <mapping class="br.com.cep.entidade.Cliente"/>
     <mapping class="br.com.cep.entidade.Endereco"/>
     <mapping class="br.com.cep.entidade.Perfil"/>
     <mapping class="br.com.cep.entidade.Usuario"/>

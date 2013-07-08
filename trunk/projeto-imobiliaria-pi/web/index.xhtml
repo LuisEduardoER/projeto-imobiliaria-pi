@@ -25,6 +25,7 @@
                     <p:submenu label="Cadastro" icon="ui-icon-disk" >
                         <p:submenu label="Pessoa" icon="ui-icon-arrowreturnthick-1-e"> 
                             <p:menuitem value="Funcionario" action="#{funcionarioControle.novoFuncionario()}" ajax="false"/>
+                            <p:menuitem value="Cliente" action="#{clienteControle.novoCliente()}" ajax="false"/>
                         </p:submenu>
                         <p:submenu label="Endereço" icon="ui-icon-arrowreturnthick-1-e"> 
                             <p:menuitem value="Estado" action="#{estadoControle.novoEstado()}" ajax="false" />
@@ -41,30 +42,41 @@
                     </p:submenu>
 
                     <p:submenu label="Editar" icon="ui-icon-pencil">
+                        <p:submenu label="Pessoa" icon="ui-icon-arrowreturnthick-1-e"> 
+                            <p:menuitem value="Funcionario" icon="ui-icon-arrowreturnthick-1-e" action="#{funcionarioControle.pesquisar()}" ajax="false"/>
+                            <p:menuitem value="Cliente" icon="ui-icon-arrowreturnthick-1-e" action="#{clienteControle.pesquisar()}" ajax="false"/>
+                        </p:submenu>
                         <p:submenu label="Endereço" icon="ui-icon-arrowreturnthick-1-e"> 
                             <p:menuitem value="Estado" action="#{estadoControle.pesquisar()}" ajax="false" />
                             <p:menuitem value="Municipio" action="#{municipioControle.pesquisar()}" ajax="false" />
                             <p:menuitem value="Bairro" action="#{bairroControle.pesquisar()}" ajax="false" />
                             <p:menuitem value="CEP" action="#{cepControle.pesquisar()}" ajax="false" />
                         </p:submenu>
-                        <p:menuitem value="Funcionario" icon="ui-icon-arrowreturnthick-1-e" action="#{funcionarioControle.pesquisar()}" ajax="false"/>
+                        <p:submenu label="Imovel" icon="ui-icon-arrowreturnthick-1-e"> 
+                            <p:menuitem value="Tipo Imóvel" icon="ui-icon-arrowreturnthick-1-e" action="#{tipoImovelControle.pesquisar()}" ajax="false"/>
+                            <p:menuitem value="Status" icon="ui-icon-arrowreturnthick-1-e" action="#{statusControle.pesquisar()}" ajax="false"/>
+                        </p:submenu>
                         <p:menuitem value="Funcao" icon="ui-icon-arrowreturnthick-1-e" action="#{funcaoControle.pesquisar()}" ajax="false"/>
-                        <p:menuitem value="Tipo Imóvel" icon="ui-icon-arrowreturnthick-1-e" action="#{tipoImovelControle.pesquisar()}" ajax="false"/>
-                        <p:menuitem value="Status" icon="ui-icon-arrowreturnthick-1-e" action="#{statusControle.pesquisar()}" ajax="false"/>
                         
                     </p:submenu>
 
                     <p:submenu label="Excluir" icon="ui-icon-close">
+                        <p:submenu label="Pessoa" icon="ui-icon-arrowreturnthick-1-e"> 
+                            <p:menuitem value="Funcionario" icon="ui-icon-arrowreturnthick-1-e" action="#{funcionarioControle.pesquisarExcluir()}" ajax="false"/>
+                            <p:menuitem value="Cliente" icon="ui-icon-arrowreturnthick-1-e" action="#{clienteControle.pesquisarExcluir()}" ajax="false"/>
+                        </p:submenu>
                         <p:submenu label="Endereço" icon="ui-icon-arrowreturnthick-1-e"> 
                             <p:menuitem value="Estado" action="#{estadoControle.pesquisarExcluir()}" ajax="false" />
                             <p:menuitem value="Municipio" action="#{municipioControle.pesquisarExcluir()}" ajax="false" />
                             <p:menuitem value="Bairro" action="#{bairroControle.pesquisarExcluir()}" ajax="false" />
                             <p:menuitem value="CEP" action="#{cepControle.pesquisarExcluir()}" ajax="false" />
                         </p:submenu>
-                        <p:menuitem value="Funcionario" icon="ui-icon-arrowreturnthick-1-e" action="#{funcionarioControle.pesquisarExcluir()}" ajax="false"/>
+                        <p:submenu label="Imovel" icon="ui-icon-arrowreturnthick-1-e"> 
+                            <p:menuitem value="Tipo Imóvel" icon="ui-icon-arrowreturnthick-1-e" action="#{tipoImovelControle.pesquisarExcluir()}" ajax="false"/>
+                            <p:menuitem value="Status" icon="ui-icon-arrowreturnthick-1-e" action="#{statusControle.pesquisarExcluir()}" ajax="false"/>
+                        </p:submenu>
                         <p:menuitem value="Função" icon="ui-icon-arrowreturnthick-1-e" action="#{funcaoControle.pesquisarExcluir()}" ajax="false"/>
-                        <p:menuitem value="Tipo Imóvel" icon="ui-icon-arrowreturnthick-1-e" action="#{tipoImovelControle.pesquisarExcluir()}" ajax="false"/>
-                        <p:menuitem value="Status" icon="ui-icon-arrowreturnthick-1-e" action="#{statusControle.pesquisarExcluir()}" ajax="false"/>
+        
                     </p:submenu>
 
                     <p:submenu label="Pesquisar" icon="ui-icon-search" >

@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral">
+                    <p:fieldset legend="Cadastro de Clientes" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
+                    <h:form id="formCad">
+                        <h:panelGrid style="margin-bottom: 20px;" columns="2">
+                            <h:outputLabel value="Nome:" />
+                            <p:inputText id="nome" 
+                                         value="#{clienteControle.cliente.nome}" 
+                                         required="true" requiredMessage="nome é obrigatório" style="margin-left: 45px;"/>
+                            
+                            <h:outputText value="Data de nascimento:" />   
+                            <p:calendar value="#{clienteControle.cliente.nascimento}" locale="pt_BR" showButtonPanel="true" navigator="true" id="nascimento" style="margin-left: 45px;"/>
+                            
+                            <h:outputLabel value="Sexo:" />
+                            <p:selectOneRadio id="options" 
+                                              value="#{clienteControle.cliente.sexo}" 
+                                              required="true" requiredMessage="sexo é obrigatório"  style="margin-left: 45px;">
+                                <f:selectItem itemLabel="Feminino" itemValue="feminino" />
+                                <f:selectItem itemLabel="Masculino" itemValue="masculino" />
+                            </p:selectOneRadio>
+                            
+                            <h:outputLabel value="CPF:" />                    
+                            <p:inputMask id="cpf" mask="999.999.999-99"
+                                         value="#{clienteControle.cliente.cpf}" 
+                                         required="true" requiredMessage="cpf é obrigatório"  style="margin-left: 45px;"/>
+                            
+                            <h:outputLabel value="RG:" />
+                            <p:inputText id="rg" 
+                                         value="#{clienteControle.cliente.rg}" 
+                                         required="true" requiredMessage="rg é obrigatório" style="margin-left: 45px;"/>
+                            
+                            <h:outputLabel value="Telefone:" />
+                            <p:inputMask value="#{clienteControle.cliente.telefone}" mask="(99) 9999-9999" required="true" requiredMessage="telefone é obrigatório" style="margin-left: 45px;"/>  
+                            
+                            <h:outputLabel value="Celular:" />
+                            <p:inputMask value="#{clienteControle.cliente.celular}" mask="(99) 9999-9999" required="true" requiredMessage="telefone é obrigatório" style="margin-left: 45px;"/>  
+                            
+                            <h:outputLabel value="E-mail:" />
+                            <p:inputText id="email" 
+                                         value="#{clienteControle.cliente.email}" 
+                                         required="true" requiredMessage="email é obrigatório" style="margin-left: 45px;"/>
+                            
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3">
+                            <h:outputLabel value="Cep:" />
+                            <p:inputMask id="cep" mask="99999999" value="#{clienteControle.cep.cep}"  style="margin-left: 80px;" required="true" requiredMessage="cep é obrigatório" />
+                            <p:commandButton value="Pesquisar" update="panelEnd" process="@this,cep"  style="margin-left: 20px;" action="#{clienteControle.pesquisaCep()}" />
+                        </h:panelGrid>
+
+                        <h:panelGrid id="panelEnd" columns="2">
+                            <h:outputLabel value="Logradouro:" />
+                            <p:inputText id="log" 
+                                         value="#{clienteControle.cep.logradouro}" 
+                                         style="margin-left: 10px;" readonly="true" required="true" requiredMessage="logradouro é obrigatório" />
+
+                            <h:outputLabel value="Número:" />
+                            <p:inputText id="num" 
+                                         value="#{clienteControle.endereco.numero}" 
+                                         style="margin-left: 10px;" required="true" requiredMessage="numero é obrigatório" />
+
+                            <h:outputLabel value="Complemento:" />
+                            <p:inputText id="comp" 
+                                         value="#{clienteControle.endereco.complemento}" 
+                                         style="margin-left: 10px;" required="true" requiredMessage="cracha é obrigatório" />
+
+                            <h:outputLabel value="Bairro:" />
+                            <p:inputText id="bairro" 
+                                         value="#{clienteControle.cep.bairro.nome}" 
+                                         style="margin-left: 10px;" readonly="true" required="true" requiredMessage="bairro é obrigatório" />
+
+                            <h:outputLabel value="Município:" />
+                            <p:inputText id="mun" 
+                                         value="#{clienteControle.cep.bairro.municipio.nome}" 
+                                         style="margin-left: 10px;" readonly="true" required="true" requiredMessage="municipio é obrigatório" />
+
+                            <h:outputLabel value="Sigla:" />
+                            <p:inputText id="sigla" 
+                                         value="#{clienteControle.cep.bairro.municipio.estado.sigla}" 
+                                         style="margin-left: 10px;" readonly="true" required="true" requiredMessage="cracha é obrigatório" />
+                        </h:panelGrid>
+                        <p:commandButton value="Salvar" ajax="false" action="#{clienteControle.salvar()}" style=" margin:25px 0 20px 190px" />
+                    </h:form>
+                    </p:fieldset>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
