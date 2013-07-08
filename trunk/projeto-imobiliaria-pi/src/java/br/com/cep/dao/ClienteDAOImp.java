@@ -36,7 +36,7 @@ public class ClienteDAOImp extends BaseDAOImp<Cliente, Long> implements ClienteD
     @Override
     public List<Cliente> procuraClientePorNome(String nome) throws Exception {
         abreConexao();
-        Query query = session.createQuery("from Cliente func WHERE func.nome like :nome");
+        Query query = session.createQuery("from Cliente cli WHERE cli.nome like :nome");
         query.setString("nome", "%" +nome+ "%");
         List<Cliente> clientes = query.list();
         session.close();
