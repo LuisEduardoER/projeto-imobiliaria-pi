@@ -24,16 +24,6 @@ import javax.persistence.TemporalType;
 public class Cliente extends Pessoa {
     @Temporal(TemporalType.TIMESTAMP)       
     private Date dataRegistro = new java.sql.Date(System.currentTimeMillis());
-    @OneToMany(mappedBy = "cliente")
-    private List<Imovel> imoveis;
-
-    public List<Imovel> getImoveis() {
-        return imoveis;
-    }
-
-    public void setImoveis(List<Imovel> imoveis) {
-        this.imoveis = imoveis;
-    }
 
     public Date getDataRegistro() {
         return dataRegistro;

@@ -6,6 +6,7 @@ package br.com.cep.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,13 +40,9 @@ public class Imovel implements Serializable {
     private String suite;
     @Column(nullable=false)
     private String garagem;
-    @Column(nullable=false)
     private String foto1;
-    @Column(nullable=false)
     private String foto2;
-    @Column(nullable=false)
     private String foto3;
-    @Column(nullable=false)
     private String foto4;
     @Temporal(TemporalType.TIMESTAMP)       
     private Date dataCadastro = new java.sql.Date(System.currentTimeMillis());
@@ -54,8 +51,38 @@ public class Imovel implements Serializable {
     @Column(nullable=false)
     private double areaTotal;
     @ManyToOne
-    @JoinColumn(name="id_cliente")
-    private Cliente cliente;
+    @JoinColumn(name="id_tipoImovel")
+    private TipoImovel tipoImovel;
+    @ManyToOne
+    @JoinColumn(name="id_status")
+    private Status status;
+    @ManyToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name="id_endereco")
+    private Endereco endereco;
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public TipoImovel getTipoImovel() {
+        return tipoImovel;
+    }
+
+    public void setTipoImovel(TipoImovel tipoImovel) {
+        this.tipoImovel = tipoImovel;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public String getNome() {
         return nome;
@@ -167,14 +194,6 @@ public class Imovel implements Serializable {
 
     public void setAreaTotal(double areaTotal) {
         this.areaTotal = areaTotal;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public Long getId() {
