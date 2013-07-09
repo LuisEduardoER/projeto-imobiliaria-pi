@@ -11,6 +11,7 @@ import br.com.cep.dao.ClienteDAOImp;
 import br.com.cep.entidade.Cep;
 import br.com.cep.entidade.Cliente;
 import br.com.cep.entidade.Endereco;
+import java.util.Random;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -25,22 +26,23 @@ import javax.faces.model.ListDataModel;
 @ManagedBean
 @SessionScoped
 public class ClienteControle {
+
     private Cliente cliente;
     private ClienteDAO clienteDao;
     private DataModel model;
     private boolean pesquisa = false;
     private Endereco endereco;
     private Cep cep;
-    
+
     public Endereco getEndereco() {
-        if(endereco == null){
+        if (endereco == null) {
             endereco = new Endereco();
         }
         return endereco;
     }
 
     public Cep getCep() {
-        if(cep == null){
+        if (cep == null) {
             cep = new Cep();
         }
         return cep;
@@ -55,7 +57,7 @@ public class ClienteControle {
     }
 
     public Cliente getCliente() {
-        if(cliente == null){
+        if (cliente == null) {
             cliente = new Cliente();
         }
         return cliente;
@@ -64,7 +66,7 @@ public class ClienteControle {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
@@ -76,45 +78,52 @@ public class ClienteControle {
     public void setPesquisa(boolean pesquisa) {
         this.pesquisa = pesquisa;
     }
-    
-    public String salvar(){
+
+    public int GerarCodigo() {
+        Random gerador = new Random();
+        int numero = gerador.nextInt();
+        return numero;
+    }
+
+    public String salvar() {
         clienteDao = new ClienteDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
         endereco.setCep(cep);
         cliente.setEndereco(endereco);
-            try {
-                if(cliente.getId() == null){
-                    clienteDao.salva(cliente);
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvo com Sucesso!", ""));
-                }else{
-                   clienteDao.altera(cliente); 
-                   context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Alterado com Sucesso!", ""));
-                }
-            } catch (Exception ex) {
-                System.out.println("Erro ao salvar estado" + ex.getMessage());
+        
+        try {
+            if (cliente.getId() == null) {
+                clienteDao.salva(cliente);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvo com Sucesso!", ""));
+            } else {
+                clienteDao.altera(cliente);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Alterado com Sucesso!", ""));
             }
+        } catch (Exception ex) {
+            System.out.println("Erro ao salvar estado" + ex.getMessage());
+        }
         limpa();
         return "index";
     }
-    
+
     public String pesquisar() {
-        if(cliente != null) {
+        if (cliente != null) {
             limpa();
             model = null;
         }
         pesquisa = false;
         return "pesqClienteAlterar";
     }
-    
+
     public String pesquisarExcluir() {
-        if(cliente != null) {
+        if (cliente != null) {
             limpa();
             model = null;
         }
         pesquisa = false;
         return "pesqClienteExcluir";
     }
-    
+
     public String editar() {
         cliente = (Cliente) model.getRowData();
         endereco = cliente.getEndereco();
@@ -122,8 +131,8 @@ public class ClienteControle {
         setCliente(cliente);
         return "cadCliente";
     }
-    
-    public String excluir(){
+
+    public String excluir() {
         FacesContext context = FacesContext.getCurrentInstance();
         cliente = (Cliente) model.getRowData();
         clienteDao = new ClienteDAOImp();
@@ -131,36 +140,36 @@ public class ClienteControle {
             clienteDao.excluir(cliente);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Excluido com Sucesso!", ""));
         } catch (Exception ex) {
-                System.out.println("Erro ao excluir" + ex.getMessage());
+            System.out.println("Erro ao excluir" + ex.getMessage());
         }
         return "index";
     }
-    
+
     private void limpa() {
         cliente = null;
         endereco = null;
     }
-    
+
     public String novoCliente() {
         cliente = new Cliente();
         pesquisa = false;
         return "cadCliente";
     }
-    
+
     public void pesquisaCliente() {
         clienteDao = new ClienteDAOImp();
-        if(cliente.getNome() != null){
+        if (cliente.getNome() != null) {
             try {
-            model = new ListDataModel(clienteDao.procuraClientePorNome(cliente.getNome()));
-            } catch(Exception ex) {
+                model = new ListDataModel(clienteDao.procuraClientePorNome(cliente.getNome()));
+            } catch (Exception ex) {
                 System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
             }
         }
     }
-    
+
     public void pesquisaCep() {
         CepDAO cepDao = new CepDAOImp();
-        if(cep.getCep() != null){
+        if (cep.getCep() != null) {
             try {
                 cep = cepDao.procuraCepPorCep(cep.getCep());
             } catch (Exception ex) {

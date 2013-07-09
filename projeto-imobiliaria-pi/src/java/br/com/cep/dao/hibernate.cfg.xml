@@ -23,5 +23,6 @@
     <mapping class="br.com.cep.entidade.Funcao"/>
     <mapping class="br.com.cep.entidade.TipoImovel"/>
     <mapping class="br.com.cep.entidade.Status"/>
+    <mapping class="br.com.cep.entidade.Imovel"/>
   </session-factory>
 </hibernate-configuration>
