@@ -18,6 +18,7 @@
     <class>br.com.cep.entidade.Cliente</class>
     <class>br.com.cep.entidade.Status</class>
     <class>br.com.cep.entidade.Imovel</class>
+    <class>br.com.cep.entidade.Arquivos</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.connection.username" value="root"/>

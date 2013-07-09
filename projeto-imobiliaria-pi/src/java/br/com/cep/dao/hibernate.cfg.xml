@@ -24,5 +24,6 @@
     <mapping class="br.com.cep.entidade.TipoImovel"/>
     <mapping class="br.com.cep.entidade.Status"/>
     <mapping class="br.com.cep.entidade.Imovel"/>
+    <mapping class="br.com.cep.entidade.Arquivos"/>
   </session-factory>
 </hibernate-configuration>
