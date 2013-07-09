@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                    <h:form>  
+                <div id="geral">  
+        <div align="center">  
+            <p:panel header="Arquivos" style="width:1050px">
+                <p:fileUpload fileUploadListener="#{arquivoControle.fileUploadAction}"  
+                    update="display" multiple="true" />  
+                <br />  
+                ´  
+                  
+                  
+                <p:dataTable var="arquivos" value="#{arquivoControle.listArquivos}"  
+                    widgetVar="arquivosTable"  
+                    emptyMessage="Nenhum arquivos Encontrado Nessas Condições"  
+                    rowStyleClass="#{empty rowIx or rowIx  
+mod 2 ne 0 ? 'even-row' : 'odd-row'}"  
+                    rowIndexVar="rowIx" id="display" rows="30">  
+  
+                    <f:facet name="header">  
+                        <p:outputPanel>  
+                            <h:outputText value="Procurar em todos os campos:" />  
+                            <p:inputText id="globalFilter" onkeyup="arquivosTable.filter()" />  
+                        </p:outputPanel>  
+                    </f:facet>  
+  
+                    <p:column filterBy="#{arquivos.id}" headerText="Código" footerText="Código"  
+                        filterMatchMode="contains" style="width: 40px">  
+                        <h:outputText value="#{arquivos.id}" style="width: 40px" />  
+                    </p:column>  
+  
+                    <p:column filterBy="#{arquivos.nome}" headerText="Descrição"  
+                        footerText="Descrição" filterMatchMode="contains">  
+                        <h:outputText value="#{arquivos.nome}" />  
+                    </p:column>  
+  
+                    <p:column filterBy="#{arquivos.tipo}" headerText="Tipo"  
+                        footerText="Tipo" filterMatchMode="contains" style="width: 40px">  
+                        <h:outputText value="#{arquivos.tipo}" style="width: 40px" />  
+                    </p:column>  
+  
+                    <p:column filterBy="#{arquivos.tamanho}" headerText="Tamanho"  
+                        footerText="Tamanho" filterMatchMode="contains"  
+                        style="width: 140px">  
+                        <h:outputText value="#{arquivos.tamanho}" style="width: 140px" />  
+                    </p:column>  
+  
+  
+  
+                    <p:column style="width:100px">  
+                        <h:panelGrid columns="2" styleClass="actions" cellpadding="2">  
+  
+                            <p:commandButton image="ui-icon-disk" title="Download"  
+                                ajax="false">  
+                                <f:setPropertyActionListener value="#{arquivos.id}"  
+                                    target="#{arquivoControle.arquivo.id}" />  
+                                <p:fileDownload value="#{arquivosBean.file}" />  
+                            </p:commandButton>  
+  
+                            <p:commandButton image="ui-icon-trash" title="Excluir"  
+                            onclick="confirmation.show()">  
+                            <f:setPropertyActionListener value="#{arquivos.id}"  
+                                    target="#{arquivoControle.arquivo.id}" />  
+                        </p:commandButton>  
+                        </h:panelGrid>  
+                    </p:column>  
+                </p:dataTable>  
+  
+<p:confirmDialog id="confirmDialog" message="Confirma Exclusão?"  
+            severity="alert" widgetVar="confirmation">  
+  
+            <p:commandButton id="confirm" value="Sim" update="display, messages"  
+                oncomplete="confirmation.hide()"  
+                actionListener="#{arquivoControle.remove}">  
+  
+            </p:commandButton>  
+            <p:commandButton id="decline" value="Não"  
+                onclick="confirmation.hide()" type="button" />  
+        </p:confirmDialog>  
+  
+                <style>  
+.ui-datatable .ui-datatable-data .even-row td {  
+    background-color: #fcefa1;  
+    border-right: solid 0px #4e6769;  
+}  
+  
+.ui-datatable .ui-datatable-data .odd-row td {  
+    background-color: #f7f7f7;  
+    border-right: solid 0px #4e6769;  
+}  
+</style>  
+            </p:panel>  
+        </div>  
+                    
+                </div>
+                        </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
