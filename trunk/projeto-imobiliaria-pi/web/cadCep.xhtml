@@ -12,7 +12,8 @@
     <h:body>
         <ui:composition template="./index.xhtml">
             <ui:define name="center">
-                <div id="geral">  
+                <div id="geral"> 
+                    <p:fieldset legend="Cadastro de Cep" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
                     <p:dialog header="Pesquisa de Bairro" widgetVar="dlg" resizable="false" appendToBody="true">
                         <h:form id="form_modal">
                             <h:panelGrid columns="3">
@@ -54,6 +55,7 @@
                         </h:panelGrid><br></br>
                         <p:commandButton value="Salvar" image="ui-icon-disk" action="#{cepControle.salvar()}" ajax="false"/>
                     </h:form>
+                    </p:fieldset>
                 </div>
             </ui:define>
         </ui:composition>

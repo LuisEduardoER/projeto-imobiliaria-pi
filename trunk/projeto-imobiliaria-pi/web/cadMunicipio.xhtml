@@ -13,8 +13,8 @@
         <ui:composition template="./index.xhtml">
             <ui:define name="center">
                 <div id="geral">  
+                    <p:fieldset legend="Cadastro de Estado" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
                     <h:form id="formCadEstado">
-                        <h1>Cadastrar Municipio</h1>
                         <h:panelGrid style="margin-bottom: 50px;" columns="3">
                             <h:outputLabel value="Nome" />
                             <p:inputText id="nome" value="#{municipioControle.municipio.nome}" rendered="true" requiredMessage="Nome Obrigatório"/>
@@ -28,6 +28,7 @@
                             <p:commandButton value="Cadastrar" ajax="false" action="#{municipioControle.salvar()}" style="margin-top: 20px;"/>
                         </h:panelGrid>
                     </h:form>
+                    </p:fieldset>
                 </div>
             </ui:define>
         </ui:composition>
