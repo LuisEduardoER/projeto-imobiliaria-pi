@@ -44,7 +44,7 @@ public class ArquivoControle {
         try {  
             arquivo.setNome(event.getFile().getFileName());  
             byte[] conteudo = event.getFile().getContents();  
-            String caminho = "D:\\arquivos\\" + event.getFile().getFileName();  
+            String caminho = "D:/arquivos/" + event.getFile().getFileName();  
             FileOutputStream fos = new FileOutputStream(caminho);  
             fos.write(conteudo);  
             fos.close();  
@@ -65,7 +65,7 @@ public class ArquivoControle {
             arquivos = new ArrayList<Arquivos>();  
             file = null;  
         }  
-        return "Arquivos.xhtml";  
+        return "arquivos.xhtml";  
     }  
     
     public List<Arquivos> getListArquivos() {  

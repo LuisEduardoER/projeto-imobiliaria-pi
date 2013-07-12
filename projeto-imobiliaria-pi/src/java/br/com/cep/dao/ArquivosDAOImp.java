@@ -26,7 +26,7 @@ public class ArquivosDAOImp extends BaseDAOImp<Arquivos, Long> implements Arquiv
     @Override
     public List<Arquivos> listar() {
        abreConexao();
-        Query query = session.createQuery("from Arquivo");
+        Query query = session.createQuery("from Arquivos");
         List<Arquivos> arquivos = query.list();
         session.close();
         return arquivos;
