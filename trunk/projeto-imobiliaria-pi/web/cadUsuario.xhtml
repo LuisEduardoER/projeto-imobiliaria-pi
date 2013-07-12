@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral">  
+                    <p:fieldset legend="Cadastro de Bairro" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
+                        <p:dialog header="Pesquisa de Cidade" widgetVar="dlg" resizable="false" appendToBody="true">
+                            <h:form id="form_modal">
+                                <h:panelGrid columns="3">
+                                    <h:outputText value="Nome: " />
+                                    <p:inputText id="cidade" value="#{usuarioControle.funcionario.nome}"/>
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search" update="@form" actionListener="#{usuarioControle.pesquisaFuncionario()}" />
+                                </h:panelGrid>
+
+                                <p:dataTable id="gridFuncionario" value="#{usuarioControle.modelFuncionario}" var="funcionarioGrid" paginator="true" rows="5" emptyMessage="Nenhum valor encontrado">
+                                    <f:facet name="header">
+                                        <h:outputText value="Listando Funcionario(s)"/>
+                                    </f:facet>
+                                    <p:column>
+                                        <f:facet name="header">Nome</f:facet>
+                                        <h:outputText value="#{funcionarioGrid.nome}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">CPF</f:facet>
+                                        <h:outputText value="#{funcionarioGrid.cpf}" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton icon="ui-icon-check" title="Selecione um Municipio" ajax="false" action="#{usuarioControle.carregaFuncionario()}" onclick="dlg.hide();"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </p:dialog>
+
+                        <h:form>
+                            <h:panelGrid columns="3">
+                                <h:outputText value="Funcionario: "/>
+                                <p:inputText value="#{usuarioControle.funcionario.nome}" readonly="true" onclick="dlg.show();"/>
+                                <p:commandButton value="Pesquisar" image="ui-icon-search" title="pesquisa municipio" oncomplete="dlg.show();"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <h:outputText value="Login: " />
+                                <p:inputText id="login" value="#{usuarioControle.usuario.login}" />
+
+                                <h:outputText value="Senha:" />
+                                <p:keyboard password="true" keypadOnly="true" value="#{usuarioControle.usuario.senha}" />
+                                
+                                <h:outputText value="Perfil: " />
+                                <p:selectOneMenu id="idPerfil" style="margin-left: 45px;" value="#{usuarioControle.perfil.id}">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{usuarioControle.todosPerfis}" />
+                                </p:selectOneMenu>
+                            </h:panelGrid><br></br>
+                            <p:commandButton value="Salvar" image="ui-icon-disk" action="#{usuarioControle.salvar()}" ajax="false"/>
+                        </h:form>
+                    </p:fieldset>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
