@@ -40,10 +40,6 @@ public class Imovel implements Serializable {
     private String suite;
     @Column(nullable=false)
     private String garagem;
-    private String foto1;
-    private String foto2;
-    private String foto3;
-    private String foto4;
     @Temporal(TemporalType.TIMESTAMP)       
     private Date dataCadastro = new java.sql.Date(System.currentTimeMillis());
     @Column(nullable=false)
@@ -138,38 +134,6 @@ public class Imovel implements Serializable {
 
     public void setGaragem(String garagem) {
         this.garagem = garagem;
-    }
-
-    public String getFoto1() {
-        return foto1;
-    }
-
-    public void setFoto1(String foto1) {
-        this.foto1 = foto1;
-    }
-
-    public String getFoto2() {
-        return foto2;
-    }
-
-    public void setFoto2(String foto2) {
-        this.foto2 = foto2;
-    }
-
-    public String getFoto3() {
-        return foto3;
-    }
-
-    public void setFoto3(String foto3) {
-        this.foto3 = foto3;
-    }
-
-    public String getFoto4() {
-        return foto4;
-    }
-
-    public void setFoto4(String foto4) {
-        this.foto4 = foto4;
     }
 
     public Date getDataCadastro() {
