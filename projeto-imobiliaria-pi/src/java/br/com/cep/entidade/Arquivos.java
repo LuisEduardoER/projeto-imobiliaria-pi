@@ -24,6 +24,15 @@ public class Arquivos implements Serializable {
     private String tipo;
     private String caminho;
     private int tamanho;
+    private Long id_imovel;
+
+    public Long getId_imovel() {
+        return id_imovel;
+    }
+
+    public void setId_imovel(Long id_imovel) {
+        this.id_imovel = id_imovel;
+    }
 
     public String getNome() {
         return nome;

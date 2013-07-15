@@ -5,6 +5,7 @@
 package br.com.cep.dao;
 
 import br.com.cep.entidade.Arquivos;
+import br.com.cep.entidade.Imovel;
 import br.com.cep.entidade.Status;
 import java.util.List;
 import org.hibernate.Query;
@@ -30,5 +31,10 @@ public class ArquivosDAOImp extends BaseDAOImp<Arquivos, Long> implements Arquiv
         List<Arquivos> arquivos = query.list();
         session.close();
         return arquivos;
+    }
+
+    @Override
+    public List<Arquivos> procuraArquivosPorNome(String nome) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

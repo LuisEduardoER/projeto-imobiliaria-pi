@@ -8,10 +8,13 @@ import br.com.cep.dao.BairroDAO;
 import br.com.cep.dao.BairroDAOImp;
 import br.com.cep.dao.FuncionarioDAO;
 import br.com.cep.dao.FuncionarioDAOImp;
+import br.com.cep.dao.ImovelDAO;
+import br.com.cep.dao.ImovelDAOImp;
 import br.com.cep.dao.MunicipioDAO;
 import br.com.cep.dao.MunicipioDAOImp;
 import br.com.cep.entidade.Bairro;
 import br.com.cep.entidade.Funcionario;
+import br.com.cep.entidade.Imovel;
 import br.com.cep.entidade.Municipio;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,5 +56,16 @@ public class EnderecoUtil {
                 System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
             }
         return bairros;
+    }
+    
+    public List<Imovel> pesquisaImovel(String codigo) {
+        List<Imovel> imoveis = new ArrayList();
+        ImovelDAO iDao = new ImovelDAOImp();
+            try {
+            imoveis = iDao.procuraImovelPorCodigo(codigo);
+            } catch(Exception ex) {
+                System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
+            }
+        return imoveis;
     }
 }
