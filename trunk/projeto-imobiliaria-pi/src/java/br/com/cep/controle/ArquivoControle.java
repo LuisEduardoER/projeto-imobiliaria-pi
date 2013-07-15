@@ -6,10 +6,10 @@ package br.com.cep.controle;
 
 import br.com.cep.dao.ArquivosDAO;
 import br.com.cep.dao.ArquivosDAOImp;
-import br.com.cep.dao.StatusDAO;
-import br.com.cep.dao.StatusDAOImp;
+import br.com.cep.dao.ImovelDAO;
+import br.com.cep.dao.ImovelDAOImp;
 import br.com.cep.entidade.Arquivos;
-import br.com.cep.entidade.Status;
+import br.com.cep.entidade.Imovel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,6 +23,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -36,10 +37,24 @@ import org.primefaces.model.StreamedContent;
 public class ArquivoControle {
     private static final long serialVersionUID = 1L;  
     private Arquivos arquivo = new Arquivos();  
-    private List<Arquivos> arquivos = new ArrayList<Arquivos>();  
+    private List<Arquivos> arquivos = new ArrayList<Arquivos>();
+    private Imovel imovel;
+    private ImovelDAO imovelDao;
+    private DataModel model;
+    private DataModel modelImovel;
+    
+    private boolean pesquisa = false;
     @SuppressWarnings("unused")  
     private StreamedContent file;  
-  
+
+    public DataModel getModelImovel() {
+        return modelImovel;
+    }
+
+    public void setModelImovel(DataModel modelImovel) {
+        this.modelImovel = modelImovel;
+    }
+    
     public String fileUploadAction(FileUploadEvent event) throws IOException {  
         try {  
             arquivo.setNome(event.getFile().getFileName());  
@@ -54,6 +69,8 @@ public class ArquivoControle {
             String nomeArquivo = arquivo.getNome();  
             int e = nomeArquivo.lastIndexOf(".");  
             arquivo.setTipo(nomeArquivo.substring(e));  
+            Long imovelId = imovel.getId();
+            arquivo.setId_imovel(imovelId);
             arquivoDao.salva(arquivo);  
             FacesContext context = FacesContext.getCurrentInstance();  
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Arquivo Salvo!", arquivo.getNome()));  
@@ -120,5 +137,58 @@ public class ArquivoControle {
   
     public void setArquivos(List<Arquivos> arquivos) {  
         this.arquivos = arquivos;  
-    }  
+    } 
+    
+    public Imovel getImovel() {
+        if(imovel == null){
+            imovel = new Imovel();
+        }
+        return imovel;
+    }
+
+    public DataModel getModel() {
+        return model;
+    }
+
+    public void setImovel(Imovel imovel) {
+        this.imovel = imovel;
+    }
+
+    public boolean isPesquisa() {
+        return pesquisa;
+    }
+
+    public void setPesquisa(boolean pesquisa) {
+        this.pesquisa = pesquisa;
+    }
+    
+    private void limpa() {
+        imovel = null;
+    }
+    
+    public void pesquisaImovel() {
+        EnderecoUtil endUtil;
+        if(imovel.getCodigo() != null){
+            endUtil = new EnderecoUtil();
+            List imoveis = endUtil.pesquisaImovel(imovel.getCodigo());
+            modelImovel = new ListDataModel(imoveis);
+        }
+        limpa();
+    }
+    
+    
+    public List<SelectItem> getTodosImoveis() throws Exception {
+        ImovelDAO iDao = new ImovelDAOImp();
+        List<Imovel> imoveis = iDao.listar();
+        List<SelectItem> listaCombo = new ArrayList<SelectItem>();
+        for (Imovel imovel : imoveis) {
+            listaCombo.add(new SelectItem(imovel.getId(), imovel.getNome()));
+        }
+        return listaCombo;
+    }
+    
+    public void carregaMunicipio() {
+        imovel = (Imovel) modelImovel.getRowData();
+        pesquisa = false;
+    }
 }  

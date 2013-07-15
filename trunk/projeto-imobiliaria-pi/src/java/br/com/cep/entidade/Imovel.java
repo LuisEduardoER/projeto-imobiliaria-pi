@@ -6,6 +6,7 @@ package br.com.cep.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,34 +30,58 @@ public class Imovel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
+    
     @Column(nullable=false)
     private String codigo;
+    
     @Column(nullable=false)
     private String sala;
+    
     @Column(nullable=false)
     private String dormitorio;
+    
     @Column(nullable=false)
     private String banheiro;
+    
     @Column(nullable=false)
     private String suite;
+    
     @Column(nullable=false)
     private String garagem;
+    
     @Temporal(TemporalType.TIMESTAMP)       
     private Date dataCadastro = new java.sql.Date(System.currentTimeMillis());
+    
     @Column(nullable=false)
     private double valor;
+    
     @Column(nullable=false)
     private double areaTotal;
+   
     @ManyToOne
     @JoinColumn(name="id_tipoImovel")
     private TipoImovel tipoImovel;
+    
     @ManyToOne
     @JoinColumn(name="id_status")
     private Status status;
+   
     @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name="id_endereco")
     private Endereco endereco;
+    
+    @OneToMany
+    @JoinColumn(name="imovel_id")
+    private List<Arquivos> arquivos;
 
+    public List<Arquivos> getArquivos() {
+        return arquivos;
+    }
+
+    public void setArquivos(List<Arquivos> arquivos) {
+        this.arquivos = arquivos;
+    }
+    
     public Endereco getEndereco() {
         return endereco;
     }
