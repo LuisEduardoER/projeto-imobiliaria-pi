@@ -166,7 +166,7 @@ public class ArquivoControle {
     }
     
     public void pesquisaImovel() {
-        EnderecoUtil endUtil;
+        EnderecoUtil endUtil = null;
         if(imovel.getCodigo() != null){
             endUtil = new EnderecoUtil();
             List imoveis = endUtil.pesquisaImovel(imovel.getCodigo());

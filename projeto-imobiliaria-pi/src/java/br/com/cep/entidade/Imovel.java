@@ -60,6 +60,17 @@ public class Imovel implements Serializable {
     @ManyToOne
     @JoinColumn(name="id_cliente")
     private Cliente cliente;
+    
+    @OneToMany(mappedBy = "imovel")
+    private List<Arquivos> arquivos;
+
+    public List<Arquivos> getArquivos() {
+        return arquivos;
+    }
+
+    public void setArquivos(List<Arquivos> arquivos) {
+        this.arquivos = arquivos;
+    }
 
     public Cliente getCliente() {
         return cliente;
