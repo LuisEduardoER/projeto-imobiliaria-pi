@@ -13,6 +13,7 @@ import br.com.cep.dao.StatusDAOImp;
 import br.com.cep.dao.TipoImovelDAO;
 import br.com.cep.dao.TipoImovelDAOImp;
 import br.com.cep.entidade.Cep;
+import br.com.cep.entidade.Cliente;
 import br.com.cep.entidade.Endereco;
 import br.com.cep.entidade.Imovel;
 import br.com.cep.entidade.Status;
@@ -44,9 +45,26 @@ public class ImovelControle {
     private boolean pesquisa = false;
     private Endereco endereco;
     private Cep cep;
+    private Cliente cliente;
+    private DataModel modelCliente;
 
+    public DataModel getModelCliente() {
+        return modelCliente;
+    }
+
+    public void setModelCliente(DataModel modelCliente) {
+        this.modelCliente = modelCliente;
+    }
+    
     public ImovelDAO getImovelDao() {
         return imovelDao;
+    }
+    
+    public Cliente getCliente() {
+        if(cliente == null){
+            cliente = new Cliente();
+        }
+        return cliente;
     }
 
     public void setImovelDao(ImovelDAO imovelDao) {
@@ -133,6 +151,7 @@ public class ImovelControle {
         imovel.setEndereco(endereco);
         imovel.setTipoImovel(tipoImovel);
         imovel.setStatus(status);
+        imovel.setCliente(cliente);
         GerarCodigo();
         try {
             if (imovel.getId() == null) {
@@ -228,6 +247,22 @@ public class ImovelControle {
                 System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
             }
         }
+    }
+    
+    
+    public void pesquisaCliente() {
+        EnderecoUtil endUtil;
+        if(cliente.getNome() != null){
+            endUtil = new EnderecoUtil();
+            List clientes = endUtil.pesquisaCliente(cliente.getNome());
+            modelCliente = new ListDataModel(clientes);
+        }
+        limpa();
+    }
+    
+    public void carregaImovel() {
+        cliente = (Cliente) modelCliente.getRowData();
+        pesquisa = false;
     }
 
     public void pesquisaCep() {

@@ -12,10 +12,41 @@
     <h:body>
         <ui:composition template="./index.xhtml">
             <ui:define name="center">
-                <div id="geral">
+                <div id="geral">  
                     <p:fieldset legend="Cadastro de Imovel" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
-                        <h:form id="formCad">
-                            <h:panelGrid style="margin-bottom: 20px;" columns="2">
+                        <p:dialog header="Pesquisa de Clientes" widgetVar="dlg" resizable="false" appendToBody="true">
+                            <h:form id="form_modal">
+                                <h:panelGrid columns="3">
+                                    <h:outputText value="Nome: " />
+                                    <p:inputText id="cliente" value="#{imovelControle.cliente.nome}"/>
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search" update="@form" actionListener="#{imovelControle.pesquisaCliente()}" />
+                                </h:panelGrid>
+
+                                <p:dataTable id="gridCliente" value="#{imovelControle.modelCliente}" var="clienteGrid" paginator="true" rows="5" emptyMessage="Nenhum valor encontrado">
+                                    <f:facet name="header">
+                                        <h:outputText value="Listando Cliente(s)"/>
+                                    </f:facet>
+                                    <p:column>
+                                        <f:facet name="header">Nome</f:facet>
+                                        <h:outputText value="#{clienteGrid.nome}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">CPF</f:facet>
+                                        <h:outputText value="#{clienteGrid.cpf}" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton icon="ui-icon-check" title="Selecione um Municipio" ajax="false" action="#{imovelControle.carregaImovel()}" onclick="dlg.hide();"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </p:dialog>
+                        <h:form>
+                            <h:panelGrid columns="3">
+                                <h:outputText value="Cliente: "/>
+                                <p:inputText value="#{imovelControle.cliente.nome}" readonly="true" onclick="dlg.show();"/>
+                                <p:commandButton value="Pesquisar" image="ui-icon-search" title="pesquisa cliente" oncomplete="dlg.show();"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
                                 <h:outputLabel value="Nome:" />
                                 <p:inputText id="nome" 
                                              value="#{imovelControle.imovel.nome}" 
@@ -30,7 +61,7 @@
                                     <f:selectItem itemLabel="3" itemValue="3" />  
                                     <f:selectItem itemLabel="+4" itemValue="4" />
                                 </p:selectOneMenu>
-                                
+
                                 <h:outputText value="Dormitorio: " />  
                                 <p:selectOneMenu value="#{imovelControle.imovel.dormitorio}" style="margin-left: 45px;"> 
                                     <f:selectItem itemLabel="Selecione" itemValue="" />  
@@ -40,7 +71,7 @@
                                     <f:selectItem itemLabel="3" itemValue="3" />  
                                     <f:selectItem itemLabel="+4" itemValue="4" />
                                 </p:selectOneMenu>
-                                
+
                                 <h:outputText value="Banheiro: " />  
                                 <p:selectOneMenu value="#{imovelControle.imovel.banheiro}" style="margin-left: 45px;">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />  
@@ -50,7 +81,7 @@
                                     <f:selectItem itemLabel="3" itemValue="3" />  
                                     <f:selectItem itemLabel="+4" itemValue="4" />
                                 </p:selectOneMenu>
-                                
+
                                 <h:outputText value="Suite: " />  
                                 <p:selectOneMenu value="#{imovelControle.imovel.suite}" style="margin-left: 45px;">  
                                     <f:selectItem itemLabel="Selecione" itemValue="" />  
@@ -60,7 +91,7 @@
                                     <f:selectItem itemLabel="3" itemValue="3" />  
                                     <f:selectItem itemLabel="+4" itemValue="4" />
                                 </p:selectOneMenu>
-                                
+
                                 <h:outputText value="Garagem: " />  
                                 <p:selectOneMenu value="#{imovelControle.imovel.garagem}" style="margin-left: 45px;">  
                                     <f:selectItem itemLabel="Selecione" itemValue="" />  
@@ -70,7 +101,7 @@
                                     <f:selectItem itemLabel="3" itemValue="3" />  
                                     <f:selectItem itemLabel="+4" itemValue="4" />
                                 </p:selectOneMenu>
-                                
+
                                 <h:outputText value="Tipo do Imovel: " />
                                 <p:selectOneMenu id="idTipoImovel" style="margin-left: 45px;" value="#{imovelControle.tipoImovel.id}">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
@@ -94,7 +125,6 @@
                                 <p:inputText id="areaTotal" 
                                              value="#{imovelControle.imovel.areaTotal}" 
                                              required="true" requiredMessage="area total é obrigatório" style="margin-left: 45px;"/>
-
                             </h:panelGrid>
 
                             <h:panelGrid columns="3">

@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,14 +26,16 @@ public class Arquivos implements Serializable {
     private String tipo;
     private String caminho;
     private int tamanho;
-    private Long id_imovel;
+    @ManyToOne
+    @JoinColumn(name="id_imovel")
+    private Imovel imovel;
 
-    public Long getId_imovel() {
-        return id_imovel;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_imovel(Long id_imovel) {
-        this.id_imovel = id_imovel;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -66,14 +70,14 @@ public class Arquivos implements Serializable {
         this.tamanho = tamanho;
     }
 
-    public Long getId() {
-        return id;
+    public Imovel getImovel() {
+        return imovel;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setImovel(Imovel imovel) {
+        this.imovel = imovel;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;

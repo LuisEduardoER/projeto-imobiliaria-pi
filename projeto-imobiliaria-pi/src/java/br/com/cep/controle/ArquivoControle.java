@@ -42,13 +42,20 @@ public class ArquivoControle {
     private ImovelDAO imovelDao;
     private DataModel model;
     private DataModel modelImovel;
-    
     private boolean pesquisa = false;
+    
     @SuppressWarnings("unused")  
     private StreamedContent file;  
 
     public DataModel getModelImovel() {
         return modelImovel;
+    }
+    
+    public Imovel getImovel() {
+        if(imovel == null){
+            imovel = new Imovel();
+        }
+        return imovel;
     }
 
     public void setModelImovel(DataModel modelImovel) {
@@ -68,9 +75,8 @@ public class ArquivoControle {
             arquivo.setTamanho(conteudo.length);  
             String nomeArquivo = arquivo.getNome();  
             int e = nomeArquivo.lastIndexOf(".");  
-            arquivo.setTipo(nomeArquivo.substring(e));  
-            Long imovelId = imovel.getId();
-            arquivo.setId_imovel(imovelId);
+            arquivo.setTipo(nomeArquivo.substring(e)); 
+            arquivo.setImovel(imovel);
             arquivoDao.salva(arquivo);  
             FacesContext context = FacesContext.getCurrentInstance();  
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Arquivo Salvo!", arquivo.getNome()));  
@@ -138,13 +144,6 @@ public class ArquivoControle {
     public void setArquivos(List<Arquivos> arquivos) {  
         this.arquivos = arquivos;  
     } 
-    
-    public Imovel getImovel() {
-        if(imovel == null){
-            imovel = new Imovel();
-        }
-        return imovel;
-    }
 
     public DataModel getModel() {
         return model;
@@ -176,18 +175,7 @@ public class ArquivoControle {
         limpa();
     }
     
-    
-    public List<SelectItem> getTodosImoveis() throws Exception {
-        ImovelDAO iDao = new ImovelDAOImp();
-        List<Imovel> imoveis = iDao.listar();
-        List<SelectItem> listaCombo = new ArrayList<SelectItem>();
-        for (Imovel imovel : imoveis) {
-            listaCombo.add(new SelectItem(imovel.getId(), imovel.getNome()));
-        }
-        return listaCombo;
-    }
-    
-    public void carregaMunicipio() {
+    public void carregaImovel() {
         imovel = (Imovel) modelImovel.getRowData();
         pesquisa = false;
     }

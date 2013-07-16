@@ -181,16 +181,6 @@ public class UsuarioControle {
         limpa();
     }
     
-    public List<SelectItem> getTodosMunicipios() throws Exception {
-        MunicipioDAO muniDao = new MunicipioDAOImp();
-        List<Municipio> municipios = muniDao.listar();
-        List<SelectItem> listaCombo = new ArrayList<SelectItem>();
-        for (Municipio municipio : municipios) {
-            listaCombo.add(new SelectItem(municipio.getId(), municipio.getNome()));
-        }
-        return listaCombo;
-    }
-    
     public String editar() {
         usuario = (Usuario) model.getRowData();
         setUsuario(usuario);
