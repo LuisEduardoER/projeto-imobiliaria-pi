@@ -16,49 +16,41 @@
                     <p:growl id="messages" />  
                     <div align="center">  
                         
-                        
-                        <p:fieldset legend="Busca de Imovel" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
-                    <p:dialog header="Pesquisa de Imovel" widgetVar="dlg" resizable="false" appendToBody="true">
-                        <h:form id="form_modal">
-                            <h:panelGrid columns="3">
-                                <h:outputText value="Imovel: " />
-                                <p:inputText id="imovel" value="#{arquivoControle.imovel.codigo}"/>
-                                <p:commandButton value="Pesquisar" image="ui-icon-search" update="@form" actionListener="#{arquivoControle.pesquisaImovel()}" />
-                            </h:panelGrid>
+                    <p:dialog header="Pesquisa de Imóveis" widgetVar="dlg" resizable="false" appendToBody="true">
+                            <h:form id="form_modal">
+                                <h:panelGrid columns="3">
+                                    <h:outputText value="Imóvel: " />
+                                    <p:inputText id="codigo" value="#{arquivoControle.imovel.codigo}"/>
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search" update="@form" actionListener="#{arquivoControle.pesquisaImovel()}" />
+                                </h:panelGrid>
 
-                            <p:dataTable id="gridImovel" value="#{arquivoControle.model}" var="imovelGrid" paginator="true" rows="5" emptyMessage="Nenhum valor encontrado">
-                                <f:facet name="header">
-                                    <h:outputText value="Listando Imovel(s)"/>
-                                </f:facet>
-                                <p:column>
-                                    <f:facet name="header">Código</f:facet>
-                                    <h:outputText value="#{imovelGrid.codigo}" />
-                                </p:column>
-                                <p:column>
-                                    <f:facet name="header">ID</f:facet>
-                                    <h:outputText value="#{imovelGrid.id}" />
-                                </p:column>
-                                <p:column>
-                                    <p:commandButton icon="ui-icon-check" title="Selecione um Imóvel" ajax="false" action="#{arquivoControle.carregaImovel()}" onclick="dlg.hide();"/>
-                                </p:column>
-                            </p:dataTable>
-                        </h:form>
-                    </p:dialog>
-
+                                <p:dataTable id="gridFuncionario" value="#{arquivoControle.modelImovel}" var="imovelGrid" paginator="true" rows="5" emptyMessage="Nenhum valor encontrado">
+                                    <f:facet name="header">
+                                        <h:outputText value="Listando Imóveis(s)"/>
+                                    </f:facet>
+                                    <p:column>
+                                        <f:facet name="header">Codigo</f:facet>
+                                        <h:outputText value="#{imovelGrid.codigo}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Sala</f:facet>
+                                        <h:outputText value="#{imovelGrid.sala}" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton icon="ui-icon-check" title="Selecione um Imóvel" ajax="false" action="#{arquivoControle.carregaImovel()}" onclick="dlg.hide();"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </p:dialog>
+                    
                     <h:form>
-                        <h:panelGrid columns="3">
-                            <h:outputText value="Codigo: "/>
-                            <p:inputText value="#{arquivoControle.imovel.codigo}" readonly="true" onclick="dlg.show();"/>
-                            <p:commandButton value="Pesquisar" image="ui-icon-search" title="pesquisa imovel" oncomplete="dlg.show();"/>
-                        </h:panelGrid>
-                        <h:panelGrid columns="2">
-                            <h:outputText value="ID: " />
-                            <p:inputText id="nome" value="#{imovelControle.imovel.id}" />
-                        </h:panelGrid><br></br>
-                        
+                            <h:panelGrid columns="3">
+                                <h:outputText value="Codigo do Imóvel: "/>
+                                <p:inputText value="#{arquivoControle.imovel.codigo}" readonly="true" onclick="dlg.show();"/>
+                                <p:commandButton value="Pesquisar" image="ui-icon-search" title="pesquisa municipio" oncomplete="dlg.show();"/>
+                            </h:panelGrid>
+                           
                     </h:form>
-                    </p:fieldset>
-                        
                         
                         <p:panel header="Arquivos" style="width:1050px">
                             <p:fileUpload fileUploadListener="#{arquivoControle.fileUploadAction}"  

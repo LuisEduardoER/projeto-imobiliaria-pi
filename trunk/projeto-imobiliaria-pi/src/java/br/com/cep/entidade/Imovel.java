@@ -30,56 +30,43 @@ public class Imovel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-    
     @Column(nullable=false)
     private String codigo;
-    
     @Column(nullable=false)
     private String sala;
-    
     @Column(nullable=false)
     private String dormitorio;
-    
     @Column(nullable=false)
     private String banheiro;
-    
     @Column(nullable=false)
     private String suite;
-    
     @Column(nullable=false)
     private String garagem;
-    
     @Temporal(TemporalType.TIMESTAMP)       
     private Date dataCadastro = new java.sql.Date(System.currentTimeMillis());
-    
     @Column(nullable=false)
     private double valor;
-    
     @Column(nullable=false)
     private double areaTotal;
-   
     @ManyToOne
     @JoinColumn(name="id_tipoImovel")
     private TipoImovel tipoImovel;
-    
     @ManyToOne
     @JoinColumn(name="id_status")
     private Status status;
-   
     @ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name="id_endereco")
     private Endereco endereco;
-    
-    @OneToMany
-    @JoinColumn(name="imovel_id")
-    private List<Arquivos> arquivos;
+    @ManyToOne
+    @JoinColumn(name="id_cliente")
+    private Cliente cliente;
 
-    public List<Arquivos> getArquivos() {
-        return arquivos;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setArquivos(List<Arquivos> arquivos) {
-        this.arquivos = arquivos;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     
     public Endereco getEndereco() {
