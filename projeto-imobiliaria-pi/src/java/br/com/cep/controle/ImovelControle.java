@@ -194,7 +194,7 @@ public class ImovelControle {
             model = null;
         }
         pesquisa = false;
-        return "pesqFuncionarioAlterar";
+        return "pesqImovelAlterar";
     }
 
     public String pesquisarExcluir() {
@@ -203,7 +203,7 @@ public class ImovelControle {
             model = null;
         }
         pesquisa = false;
-        return "pesqFuncionarioExcluir";
+        return "pesqImovelExcluir";
     }
 
     public String editar() {

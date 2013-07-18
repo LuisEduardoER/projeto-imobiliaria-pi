@@ -62,6 +62,7 @@
                             <p:menuitem value="CEP" action="#{cepControle.pesquisar()}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Imóvel" icon="ui-icon-arrowreturnthick-1-e"> 
+                            <p:menuitem value="Imóvel" icon="ui-icon-arrowreturnthick-1-e" action="#{imovelControle.pesquisar()}" ajax="false"/>
                             <p:menuitem value="Tipo Imóvel" icon="ui-icon-arrowreturnthick-1-e" action="#{tipoImovelControle.pesquisar()}" ajax="false"/>
                             <p:menuitem value="Status" icon="ui-icon-arrowreturnthick-1-e" action="#{statusControle.pesquisar()}" ajax="false"/>
                         </p:submenu>
@@ -84,6 +85,7 @@
                             <p:menuitem value="CEP" action="#{cepControle.pesquisarExcluir()}" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Imóvel" icon="ui-icon-arrowreturnthick-1-e"> 
+                            <p:menuitem value="Imóvel" icon="ui-icon-arrowreturnthick-1-e" action="#{imovelControle.pesquisarExcluir()}" ajax="false"/>
                             <p:menuitem value="Tipo Imóvel" icon="ui-icon-arrowreturnthick-1-e" action="#{tipoImovelControle.pesquisarExcluir()}" ajax="false"/>
                             <p:menuitem value="Status" icon="ui-icon-arrowreturnthick-1-e" action="#{statusControle.pesquisarExcluir()}" ajax="false"/>
                         </p:submenu>
