@@ -25,44 +25,55 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Imovel implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String codigo;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String sala;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String dormitorio;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String banheiro;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String suite;
-    @Column(nullable=false)
+    @Column(nullable = false)
     private String garagem;
-    @Temporal(TemporalType.TIMESTAMP)       
+    
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dataCadastro = new java.sql.Date(System.currentTimeMillis());
-    @Column(nullable=false)
+    
+    @Column(nullable = false)
     private double valor;
-    @Column(nullable=false)
+    
+    @Column(nullable = false)
     private double areaTotal;
+    
     @ManyToOne
-    @JoinColumn(name="id_tipoImovel")
+    @JoinColumn(name = "id_tipoImovel")
     private TipoImovel tipoImovel;
+    
     @ManyToOne
-    @JoinColumn(name="id_status")
+    @JoinColumn(name = "id_status")
     private Status status;
-    @ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name="id_endereco")
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_endereco")
     private Endereco endereco;
+    
     @ManyToOne
-    @JoinColumn(name="id_cliente")
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
     
     @OneToMany(mappedBy = "imovel")
     private List<Arquivos> arquivos;
+    
+    @OneToMany(mappedBy = "imovel", cascade = CascadeType.ALL)
+    private List<Venda> vendas;
 
     public List<Arquivos> getArquivos() {
         return arquivos;
@@ -79,7 +90,7 @@ public class Imovel implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
     public Endereco getEndereco() {
         return endereco;
     }
@@ -216,5 +227,4 @@ public class Imovel implements Serializable {
     public String toString() {
         return "br.com.cep.entidade.Imovel[ id=" + id + " ]";
     }
-    
 }

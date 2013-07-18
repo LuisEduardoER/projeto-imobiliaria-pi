@@ -4,10 +4,13 @@
  */
 package br.com.cep.entidade;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
@@ -24,6 +27,9 @@ public class Funcionario extends Pessoa {
     @ManyToOne
     @JoinColumn(name="id_funcao")
     private Funcao funcao;
+    
+    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
+    private List<Venda> venda;
 
     public String getCresci() {
         return cresci;
