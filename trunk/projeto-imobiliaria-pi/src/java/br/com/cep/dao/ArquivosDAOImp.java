@@ -5,8 +5,6 @@
 package br.com.cep.dao;
 
 import br.com.cep.entidade.Arquivos;
-import br.com.cep.entidade.Imovel;
-import br.com.cep.entidade.Status;
 import java.util.List;
 import org.hibernate.Query;
 

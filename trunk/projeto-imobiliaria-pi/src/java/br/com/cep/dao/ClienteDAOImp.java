@@ -4,9 +4,7 @@
  */
 package br.com.cep.dao;
 
-import br.com.cep.entidade.Bairro;
 import br.com.cep.entidade.Cliente;
-import br.com.cep.entidade.Funcionario;
 import java.util.List;
 import org.hibernate.Query;
 
