@@ -4,7 +4,6 @@
  */
 package br.com.cep.dao;
 
-import br.com.cep.entidade.Bairro;
 import br.com.cep.entidade.Usuario;
 import java.util.List;
 

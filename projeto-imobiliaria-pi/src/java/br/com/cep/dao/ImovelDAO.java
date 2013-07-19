@@ -4,7 +4,6 @@
  */
 package br.com.cep.dao;
 
-import br.com.cep.entidade.Funcionario;
 import br.com.cep.entidade.Imovel;
 import java.util.List;
 

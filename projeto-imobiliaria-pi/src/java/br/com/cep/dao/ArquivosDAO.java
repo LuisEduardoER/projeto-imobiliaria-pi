@@ -5,7 +5,6 @@
 package br.com.cep.dao;
 
 import br.com.cep.entidade.Arquivos;
-import br.com.cep.entidade.Imovel;
 import java.util.List;
 
 /**
