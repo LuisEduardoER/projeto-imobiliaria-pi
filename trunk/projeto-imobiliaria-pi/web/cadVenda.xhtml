@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="./index.xhtml">
+            <ui:define name="center">
+                <div id="geral">  
+                    <p:fieldset legend="Cadastro de Venda" toggleable="true" toggleSpeed="500" style="margin-top: 30px">  
+                        <p:dialog header="Pesquisa de Funcionarios" widgetVar="dlg" resizable="false" appendToBody="true">
+                            <h:form id="form_modal">
+                                <h:panelGrid columns="3">
+                                    <h:outputText value="Nome: " />
+                                    <p:inputText id="cidade" value="#{vendaControle.funcionario.nome}"/>
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search" update="gridFuncionario" actionListener="#{vendaControle.pesquisaFuncionario()}" />
+                                </h:panelGrid>
+
+                                <p:dataTable id="gridFuncionario" value="#{vendaControle.modelFuncionario}" var="funcionarioGrid" paginator="true" rows="5" emptyMessage="Nenhum valor encontrado">
+                                    <f:facet name="header">
+                                        <h:outputText value="Listando Funcionario(s)"/>
+                                    </f:facet>
+                                    <p:column>
+                                        <f:facet name="header">Nome</f:facet>
+                                        <h:outputText value="#{funcionarioGrid.nome}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">CPF</f:facet>
+                                        <h:outputText value="#{funcionarioGrid.cpf}" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton icon="ui-icon-check" title="Selecione um Funcionario" ajax="false" action="#{vendaControle.carregaFuncionario()}" onclick="dlg.hide();"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </p:dialog>
+
+
+                        <p:dialog header="Pesquisa de Imóveis" widgetVar="gls" resizable="false" appendToBody="true">
+                            <h:form id="form">
+                                <h:panelGrid columns="3">
+                                    <h:outputText value="Imóvel: " />
+                                    <p:inputText id="imovel" value="#{vendaControle.imovel.codigo}"/>
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search" update="gridImovel" 
+                                                     actionListener="#{vendaControle.pesquisaImovel()}" />
+                                </h:panelGrid>
+
+                                <p:dataTable id="gridImovel" value="#{vendaControle.modelImovel}" var="imovelGrid" 
+                                             paginator="true" rows="5" emptyMessage="Nenhum valor encontrado">
+                                    <f:facet name="header">
+                                        <h:outputText value="Listando Imóvel(s)"/>
+                                    </f:facet>
+                                    <p:column>
+                                        <f:facet name="header">Id</f:facet>
+                                        <h:outputText value="#{imovelGrid.id}" />
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Estado</f:facet>
+                                        <h:outputText value="#{imovelGrid.sala}" />
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton icon="ui-icon-check" title="Selecione um Imóvel" ajax="false"
+                                                         action="#{vendaControle.carregaImovel()}" onclick="gls.hide();"/>
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
+                        </p:dialog>
+
+                        
+
+
+
+
+
+
+                        <h:form>
+                            <h:panelGrid columns="3">
+                                <h:outputText value="Funcionario: "/>
+                                <p:inputText value="#{vendaControle.funcionario.nome}" readonly="true" onclick="dlg.show();"/>
+                                <p:commandButton value="Pesquisar" image="ui-icon-search" title="pesquisa municipio" oncomplete="dlg.show();"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <h:outputText value="Imóvel: "/>
+                                <p:inputText value="#{vendaControle.imovel.codigo}" readonly="true" onclick="gls.show();"/>
+                                <p:commandButton value="Pesquisar" image="ui-icon-search" title="pesquisa imoveis" oncomplete="gls.show();"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Observação:" />
+                                <p:inputTextarea id="observacao" rows="4" cols="30" style="margin-top: 15px;" value="#{vendaControle.venda.observacao}" rendered="true" requiredMessage="Sigla Obrigatório"/>
+                            </h:panelGrid><br></br>
+                            <p:commandButton value="Salvar" image="ui-icon-disk" action="#{vendaControle.salvar()}" ajax="false"/>
+                        </h:form>
+                    </p:fieldset>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

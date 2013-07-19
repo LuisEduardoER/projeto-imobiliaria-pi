@@ -20,7 +20,7 @@
                             <p:inputText id="tipo" value="#{tipoImovelControle.tipoImovel.tipo}" rendered="true" requiredMessage="Tipo Obrigatório"/>
                             <p:message for="tipo"/>
                             <h:outputLabel value="Descrição" />
-                            <p:inputText id="descricao" value="#{tipoImovelControle.tipoImovel.descricao}" rendered="true" requiredMessage="Descrição Obrigatório"/>
+                            <p:inputTextarea id="descricao" rows="4" cols="30" style="margin-top: 15px;" value="#{tipoImovelControle.tipoImovel.descricao}" rendered="true" requiredMessage="Sigla Obrigatório"/>
                             <p:message for="descricao"/>
                             <p:commandButton value="Cadastrar" ajax="false" action="#{tipoImovelControle.salvar()}" style="margin-top: 20px;"/>
                         </h:panelGrid>
