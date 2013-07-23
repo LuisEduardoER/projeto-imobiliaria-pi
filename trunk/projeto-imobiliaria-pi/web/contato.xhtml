@@ -1,0 +1,118 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>Rede Imobiliária</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" href="flexslider.css" type="text/css" media="screen" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script src="js/jquery.flexslider-min.js"></script>
+		<script type="text/javascript" src="js/validacaoCampo.js"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+				$('.flexslider').flexslider();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="geral">
+			<div id="header">
+				<img src="imagens/logo.png" class="logo"/>
+				<div id="tels">
+					<img src="imagens/tel.png" width="427" height="80" border="0" usemap="#Map"/>
+					<map name="Map" id="Map">
+						<area shape="rect" coords="299,41,393,62" href="contato.html"/>
+					</map>
+				</div>
+				<div id="menu">
+					<ul>
+						<li><a id="home" href="index.xhtml">Home</a></li>
+						<li><a id="empresa" href="empresa.html">Empresa</a></li>
+						<li><a id="imoveis" href="#">Imóveis</a></li>
+						<li><a id="local" href="localizacao.html">Localização</a></li>
+						<li><a id="contato" href="contato.xhtml">Contato</a></li>
+					</ul>
+				</div>
+			</div>	
+			<div id="center">
+			<div class="contato">
+            <div id="tituloContato">
+				<h2>Contato</h2>
+			</div>
+            <div class="form">
+				<form id="cadform" name="cadform" method="post" action="#" onsubmit="return validaCampo();">
+                <div class="form_row">
+                    <label>Nome:</label>
+                    <input type="text" class="form_input" name="nome" />
+                </div>
+				
+                <div class="form_row">
+                        <label>E-mail:</label>
+                        <input type="text" class="form_input" name="email" />
+                 </div> 
+                        
+                        <div class="form_row">
+                        <label>Telefone:</label>
+                        <input type="text" maxlength="13" class="form_input" onkeypress="Mascara(this);" name="telefone" />
+                        </div>
+                        
+                        <div class="form_row">
+                        <label>Assunto:</label>
+                        <input type="text" class="form_input" name="assunto" />
+                        </div>
+                        
+                        
+                        <div class="form_row">
+                        <label>Menssagem:</label>
+                        <textarea class="form_textarea" maxlength="250" name="menssagem"></textarea>
+                        </div>
+                        
+                        <input type="submit" id='botao' class="form_submit" value="Enviar" /> 
+				</form>
+			</div>
+			</div>
+			<div class="localizacao">
+				<div class="agencias">
+					<h4><div class="iconAgenc">●</div> Rede Imobiliária Centro</h4>
+					<p>
+						Rua Das Flores, 40, Centro<br></br>
+						Florianópolis - CEP 99050-254<br></br>
+						(48) 3042-2152<br></br>
+						centro@redeimobiliaria.com
+					</p>
+				</div>
+				<div class="agencias">
+					<h4><div class="iconAgenc">●</div> Rede Imobiliária Estreito</h4>
+					<p>
+						Rua Das Flores, 40, Estreito<br></br>
+						Florianópolis - CEP 99050-254<br></br>
+						(48) 3042-2152<br></br>
+						estreito@redeimobiliaria.com
+					</p>
+				</div>
+				<div class="agenciaKo">
+					<h4><div class="iconAgenc">●</div> Rede Imobiliária Coqueiros</h4>
+					<p>
+						Rua Das Flores, 40, Kobrasol<br></br>
+						Florianópolis - CEP 99050-254<br></br>
+						(48) 3042-2152<br></br>
+						kobrasol@redeimobiliaria.com
+					</p>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div id="footer">
+				<div id="rodape">
+				<div id="redesociais">
+				<a href="https://www.google.com.br"><img src="imagens/google.jpg" class="google"/></a>
+				<a href="https://twitter.com"><img src="imagens/twitter.jpg" class="twitter"/></a>
+				<a href="http://www.facebook.com"><img src="imagens/facebook.jpg" class="facebook"/></a>
+				</div>
+				<a href="#"><img id="imgLogin" src="imagens/login.png" width="70" height="30" border="0"/></a>
+				<p>© Copyright 2013 - Rede Imobiliária - Todos os direitos reservados</p>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

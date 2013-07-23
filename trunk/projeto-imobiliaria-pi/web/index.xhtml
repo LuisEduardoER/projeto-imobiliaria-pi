@@ -1,121 +1,101 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>Principal</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-    </h:head>
-    <h:body>
-        <div id="geral">  
-            <p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>  
-            <p:dialog modal="true" widgetVar="statusDialog" header="Status" 
-                      draggable="false" closable="false">
-                <p:graphicImage value="imagens/carregando.gif" />
-            </p:dialog>
-
-            <h:form>
-                <p:growl id="messages"/>
-                <img src="imagens/logo.png" alt="some_text"></img>
-                <p:menubar style="border: none; padding-left:30px; ">
-                    <p:menuitem value="Home" url="index.faces" />
-                    <p:submenu label="Cadastro" icon="ui-icon-disk" >
-                        <p:submenu label="Pessoa" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Funcionario" action="#{funcionarioControle.novoFuncionario()}" ajax="false"/>
-                            <p:menuitem value="Cliente" action="#{clienteControle.novoCliente()}" ajax="false"/>
-                        </p:submenu>
-                        <p:submenu label="Usuário" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Usuário" action="#{usuarioControle.novoUsuario()}" ajax="false"/>
-                            <p:menuitem value="Perfil" action="#{perfilControle.novoPerfil()}" ajax="false"/>
-                        </p:submenu>
-                        <p:submenu label="Endereço" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Estado" action="#{estadoControle.novoEstado()}" ajax="false" />
-                            <p:menuitem value="Municipio" action="#{municipioControle.novoMunicipio()}" ajax="false" />
-                            <p:menuitem value="Bairro" action="#{bairroControle.novoBairro()}" ajax="false" />
-                            <p:menuitem value="CEP" action="#{cepControle.novoCep()}" ajax="false" />
-                        </p:submenu>
-                        <p:submenu label="Imóvel" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Imóvel" action="#{imovelControle.novoImovel()}" ajax="false"/>
-                            <p:menuitem value="Tipo de Imóvel" action="#{tipoImovelControle.novoTipo()}" ajax="false"/>
-                            <p:menuitem value="Status " action="#{statusControle.novoStatus()}" ajax="false"/>
-                        </p:submenu>
-                        <p:menuitem value="Venda" icon="ui-icon-arrowreturnthick-1-e" action="#{vendaControle.novoVenda()}" ajax="false"/>
-                        <p:menuitem value="Função" icon="ui-icon-arrowreturnthick-1-e" action="#{funcaoControle.novaFuncao()}" ajax="false"/>
-                        <p:menuitem value="Foto" icon="ui-icon-arrowreturnthick-1-e" action="arquivos.faces" ajax="false"/>
-                    </p:submenu>
-
-                    <p:submenu label="Editar" icon="ui-icon-pencil">
-                        <p:submenu label="Pessoa" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Funcionario" action="#{funcionarioControle.pesquisar()}" ajax="false"/>
-                            <p:menuitem value="Cliente" action="#{clienteControle.pesquisar()}" ajax="false"/>
-                        </p:submenu>
-                        <p:submenu label="Usuário" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Usuário" action="#{usuarioControle.pesquisar()}" ajax="false"/>
-                            <p:menuitem value="Perfil" action="#{perfilControle.pesquisar()}" ajax="false"/>
-                        </p:submenu>
-                        <p:submenu label="Endereço" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Estado" action="#{estadoControle.pesquisar()}" ajax="false" />
-                            <p:menuitem value="Municipio" action="#{municipioControle.pesquisar()}" ajax="false" />
-                            <p:menuitem value="Bairro" action="#{bairroControle.pesquisar()}" ajax="false" />
-                            <p:menuitem value="CEP" action="#{cepControle.pesquisar()}" ajax="false" />
-                        </p:submenu>
-                        <p:submenu label="Imóvel" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Imóvel" action="#{imovelControle.pesquisar()}" ajax="false"/>
-                            <p:menuitem value="Tipo Imóvel" action="#{tipoImovelControle.pesquisar()}" ajax="false"/>
-                            <p:menuitem value="Status" action="#{statusControle.pesquisar()}" ajax="false"/>
-                        </p:submenu>
-                        <p:menuitem value="Funcao" icon="ui-icon-arrowreturnthick-1-e" action="#{funcaoControle.pesquisar()}" ajax="false"/>
-                    </p:submenu>
-
-                    <p:submenu label="Excluir" icon="ui-icon-close">
-                        <p:submenu label="Pessoa" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Funcionario" action="#{funcionarioControle.pesquisarExcluir()}" ajax="false"/>
-                            <p:menuitem value="Cliente" action="#{clienteControle.pesquisarExcluir()}" ajax="false"/>
-                        </p:submenu>
-                        <p:submenu label="Usuário" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Usuário" action="#{usuarioControle.pesquisarExcluir()}" ajax="false"/>
-                            <p:menuitem value="Perfil" action="#{perfilControle.pesquisarExcluir()}" ajax="false"/>
-                        </p:submenu>
-                        <p:submenu label="Endereço" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Estado" action="#{estadoControle.pesquisarExcluir()}" ajax="false" />
-                            <p:menuitem value="Municipio" action="#{municipioControle.pesquisarExcluir()}" ajax="false" />
-                            <p:menuitem value="Bairro" action="#{bairroControle.pesquisarExcluir()}" ajax="false" />
-                            <p:menuitem value="CEP" action="#{cepControle.pesquisarExcluir()}" ajax="false" />
-                        </p:submenu>
-                        <p:submenu label="Imóvel" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Imóvel" action="#{imovelControle.pesquisarExcluir()}" ajax="false"/>
-                            <p:menuitem value="Tipo Imóvel" action="#{tipoImovelControle.pesquisarExcluir()}" ajax="false"/>
-                            <p:menuitem value="Status" action="#{statusControle.pesquisarExcluir()}" ajax="false"/>
-                        </p:submenu>
-                        <p:menuitem value="Função" icon="ui-icon-arrowreturnthick-1-e" action="#{funcaoControle.pesquisarExcluir()}" ajax="false"/>
-                    </p:submenu>
-
-                    <p:submenu label="Pesquisar" icon="ui-icon-search" >
-                        <p:submenu label="Endereço" icon="ui-icon-arrowreturnthick-1-e"> 
-                            <p:menuitem value="Estado" action="#{estadoControle.pesquisar()}" ajax="false" />
-                            <p:menuitem value="Municipio" action="#{municipioControle.pesquisar()}" ajax="false" />
-                            <p:menuitem value="Bairro" action="#{bairroControle.pesquisar()}" ajax="false" />
-                            <p:menuitem value="CEP" url="#" />
-                        </p:submenu>
-                    </p:submenu>
-
-                    <p:menuitem value="Login" url="funcionario/index.faces" icon="ui-icon-gear"/>
-
-                    <p:menuitem value="Quit" url="http://www.primefaces.org" icon="ui-icon-close" />
-
-                    <f:facet name="options">
-                        <p:inputText style="margin-right:10px"/>
-                        <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
-                    </f:facet>
-                </p:menubar>
-            </h:form>
-            <ui:insert name="center">
-
-            </ui:insert>
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Rede Imobiliária</title>
+            <link rel="stylesheet" type="text/css" href="style.css"></link>
+            <link rel="stylesheet" href="flexslider.css" type="text/css" media="screen"></link>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+            <script src="js/jquery.flexslider-min.js"></script>
+            <script type="text/javascript">
+                $(window).load(function() {
+                    $('.flexslider').flexslider();
+                });
+            </script>
+    </head>
+    <body>
+        <div id="geral">
+            <div id="header">
+                <img src="imagens/logo.png" class="logo"/>
+                <div id="tels">
+                    <img src="imagens/tel.png" width="427" height="80" border="0" usemap="#Map"/>
+                        <map name="Map" id="Map">
+                            <area shape="rect" coords="299,41,393,62" href="contato.html"></area>
+                        </map>
+                </div>
+                <div id="menu">
+                    <ul>
+                        <li><a id="home" href="index.html">Home</a></li>
+                        <li><a id="empresa" href="empresa.html">Empresa</a></li>
+                        <li><a id="imoveis" href="#">Imóveis</a></li>
+                        <li><a id="local" href="localizacao.html">Localização</a></li>
+                        <li><a id="contato" href="contato.xhtml">Contato</a></li>
+                    </ul>
+                </div>
+            </div>	
+            <div id="center">
+                <div id="slides">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li>
+                                <img src="imagens/inacup_samoa.jpg" />
+                            </li>
+                            <li>
+                                <img src="imagens/inacup_pumpkin.jpg" />
+                            </li>
+                            <li>
+                                <img src="imagens/inacup_vanilla.jpg" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="busca">
+                    <h2>Busca de Imóveis</h2>
+                    <h4>Selecione o tipo do imóvel</h4>
+                    <div id="casa">
+                        <img src="imagens/casas.png" />
+                        <form method="get" action="#">
+                            <input type="submit" value="" class="selTip" />
+                        </form>
+                    </div>
+                    <div id="apartamento">
+                        <img src="imagens/apartamento.png" />
+                        <form method="get" action="#">
+                            <input type="submit" value="" class="selTip" />
+                        </form>
+                    </div>
+                    <div id="comercial">
+                        <img src="imagens/comercial.png" />
+                        <form method="get" action="#">
+                            <input type="submit" value="" class="selTip" />
+                        </form>
+                    </div>
+                    <div id="terreno">
+                        <img src="imagens/terreno.png" />
+                        <form method="get" action="#">
+                            <input type="submit" value="" class="selTip" />
+                        </form>
+                    </div>
+                    <div id="sitio">
+                        <img src="imagens/sitio.png" />
+                        <form method="get" action="#">
+                            <input type="submit" value="" class="selTip" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>		
+        <div id="footer">
+            <div id="footer">
+                <div id="rodape">
+                    <div id="redesociais">
+                        <a href="https://www.google.com.br"><img src="imagens/google.jpg" class="google"/></a>
+                        <a href="https://twitter.com"><img src="imagens/twitter.jpg" class="twitter"/></a>
+                        <a href="http://www.facebook.com"><img src="imagens/facebook.jpg" class="facebook"/></a>
+                    </div>
+                    <a href="sistema/index.faces"><img id="imgLogin" src="imagens/login.png" width="70" height="30" border="0"/></a>
+                    <p>© Copyright 2013 - Rede Imobiliária - Todos os direitos reservados</p>
+                </div>
+            </div>
         </div>
-    </h:body>
+    </body>
 </html>
-

@@ -6,19 +6,19 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title>Bem vindo ao Gerenciador de Livros!</title>
+        <title>Login</title>
         <link type="text/css" rel="stylesheet" href="dot-luv/skin.css"/>
     </h:head>
     <h:body>
         <p:dialog header="Login" visible="true" closable="false" draggable="false" resizable="false" width="420">
             <center>
-                <h:outputText value="Usuário ou senha incorretos!" rendered="#{param.erro}" style="color: darkred"/>
+                <h:outputText value="Usuário ou senha incorretos" rendered="#{param.erro}" style="color: darkred"/>
             </center>
             <form action="j_spring_security_check" method="post">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <h:outputLabel for="j_username" value="Login: *" /> 
+                    <h:outputLabel for="j_username" value="Login: " /> 
                     <h:inputText id="j_username" required="true"/>
-                    <h:outputLabel for="j_password" value="Password: * " />
+                    <h:outputLabel for="j_password" value="Password: " />
                     <h:inputSecret id="j_password" required="true"/>
                     <h:commandButton value="Login"/>
                 </h:panelGrid>
