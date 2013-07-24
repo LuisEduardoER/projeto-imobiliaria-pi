@@ -17,6 +17,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -38,6 +40,7 @@ public class ArquivoControle {
     private static final long serialVersionUID = 1L;  
     private Arquivos arquivo = new Arquivos();  
     private List<Arquivos> arquivos = new ArrayList<Arquivos>();
+    private List<Arquivos> imagens = new ArrayList<Arquivos>();
     private Imovel imovel;
     private ImovelDAO imovelDao;
     private DataModel model;
@@ -45,8 +48,16 @@ public class ArquivoControle {
     private boolean pesquisa = false;
     
     @SuppressWarnings("unused")  
-    private StreamedContent file;  
+    private StreamedContent file;
 
+    public List<Arquivos> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(List<Arquivos> imagens) {
+        this.imagens = imagens;
+    }
+    
     public DataModel getModelImovel() {
         return modelImovel;
     }
@@ -175,8 +186,29 @@ public class ArquivoControle {
         limpa();
     }
     
+    public List<SelectItem> getTodosImoveis() throws Exception {
+        ImovelDAO iDao = new ImovelDAOImp();
+        List<Imovel> imoveis = iDao.listar();
+        List<SelectItem> listaCombo = new ArrayList<SelectItem>();
+        for (Imovel imovel : imoveis) {
+            listaCombo.add(new SelectItem(imovel.getId(), imovel.getNome()));
+        }
+        return listaCombo;
+    }
+ 
     public void carregaImovel() {
         imovel = (Imovel) modelImovel.getRowData();
         pesquisa = false;
+    }
+    
+    public List<Arquivos> carregaFotos(){
+        imagens = null;
+        ArquivosDAOImp arqDAO = new ArquivosDAOImp();
+        try {
+            imagens = arqDAO.procuraFotoId(imovel.getId());
+        } catch (Exception ex) {
+            Logger.getLogger(ArquivoControle.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return imagens;
     }
 }  
