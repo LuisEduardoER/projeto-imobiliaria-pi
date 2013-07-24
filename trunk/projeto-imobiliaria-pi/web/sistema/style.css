@@ -10,8 +10,12 @@ body {
     -khtml-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     font-family: SEGOE UI;
-    color: #000;
+    font-weight: bold; 
+    color: #222222;
 }
+
+#sair {font-weight: bold; margin-left: 600px; color: #222222; font-size: 18px;}
+#sair a:link {text-decoration: none;color: #222222}
 
 #geral {
     width: 800px;

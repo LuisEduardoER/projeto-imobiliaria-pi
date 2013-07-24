@@ -16,7 +16,7 @@
                     <h:form id="formPesqEstado">
                         <h1 style="color:#000040">Pesquisar Bairros</h1>
                         <h:panelGrid style="margin-bottom: 50px;" columns="3">
-                            <h:outputLabel value="Nome" />
+                            <h:outputLabel value="Bairro:" />
                             <p:inputText id="nome" value="#{bairroControle.bairro.nome}" />
                             <p:commandButton value="Pesquisar" ajax="false" action="#{bairroControle.pesquisaBairro()}" />
                         </h:panelGrid>

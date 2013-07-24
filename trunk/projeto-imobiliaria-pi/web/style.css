@@ -31,7 +31,7 @@ body{background:url(imagens/bg.jpg); background-position:top; background-repeat:
 #casa, #apartamento, #comercial, #terreno {float:left; margin-right:20px;}
 #sitio {float:right; width:150px; height:100px;}
 
-.selTip{display:block; margin:0 auto; margin-top:11px; width:62px; height:22px; background:url(imagens/selecione.png); }
+.selTip{display:block; font-size: 12px; margin:0 auto; margin-top:11px; width:62px; height:22px; background:url(imagens/selecione.png); }
 	
 .selTip:hover{background-position:right;}
 

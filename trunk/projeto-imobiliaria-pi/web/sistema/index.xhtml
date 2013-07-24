@@ -24,7 +24,7 @@
                     <p:menuitem value="Home" url="index.faces" />
                     <p:submenu label="Cadastro" icon="ui-icon-disk" >
                         <p:submenu label="Pessoa"> 
-                            <p:menuitem value="Funcionario" action="#{funcionarioControle.novoFuncionario()}" ajax="false"/>
+                            <p:menuitem value="Funcionário" action="#{funcionarioControle.novoFuncionario()}" ajax="false"/>
                             <p:menuitem value="Cliente" action="#{clienteControle.novoCliente()}" ajax="false"/>
                         </p:submenu>
                         <p:submenu label="Usuário"> 
@@ -33,7 +33,7 @@
                         </p:submenu>
                         <p:submenu label="Endereço"> 
                             <p:menuitem value="Estado" action="#{estadoControle.novoEstado()}" ajax="false" />
-                            <p:menuitem value="Municipio" action="#{municipioControle.novoMunicipio()}" ajax="false" />
+                            <p:menuitem value="Município" action="#{municipioControle.novoMunicipio()}" ajax="false" />
                             <p:menuitem value="Bairro" action="#{bairroControle.novoBairro()}" ajax="false" />
                             <p:menuitem value="CEP" action="#{cepControle.novoCep()}" ajax="false" />
                         </p:submenu>
@@ -49,7 +49,7 @@
 
                     <p:submenu label="Editar" icon="ui-icon-pencil">
                         <p:submenu label="Pessoa" icon="ui-icon-search"> 
-                            <p:menuitem value="Funcionario" action="#{funcionarioControle.pesquisar()}" ajax="false"/>
+                            <p:menuitem value="Funcionário" action="#{funcionarioControle.pesquisar()}" ajax="false"/>
                             <p:menuitem value="Cliente" action="#{clienteControle.pesquisar()}" ajax="false"/>
                         </p:submenu>
                         <p:submenu label="Usuário" icon="ui-icon-search"> 
@@ -58,7 +58,7 @@
                         </p:submenu>
                         <p:submenu label="Endereço" icon="ui-icon-search"> 
                             <p:menuitem value="Estado" action="#{estadoControle.pesquisar()}" ajax="false" />
-                            <p:menuitem value="Municipio" action="#{municipioControle.pesquisar()}" ajax="false" />
+                            <p:menuitem value="Município" action="#{municipioControle.pesquisar()}" ajax="false" />
                             <p:menuitem value="Bairro" action="#{bairroControle.pesquisar()}" ajax="false" />
                             <p:menuitem value="CEP" action="#{cepControle.pesquisar()}" ajax="false" />
                         </p:submenu>
@@ -68,12 +68,12 @@
                             <p:menuitem value="Tipo Imóvel" action="#{tipoImovelControle.pesquisar()}" ajax="false"/>
                             <p:menuitem value="Status" action="#{statusControle.pesquisar()}" ajax="false"/>
                         </p:submenu>
-                        <p:menuitem value="Funcao" icon="ui-icon-search" action="#{funcaoControle.pesquisar()}" ajax="false"/>
+                        <p:menuitem value="Função" icon="ui-icon-search" action="#{funcaoControle.pesquisar()}" ajax="false"/>
                     </p:submenu>
 
                     <p:submenu label="Excluir" icon="ui-icon-close">
                         <p:submenu label="Pessoa" icon="ui-icon-search"> 
-                            <p:menuitem value="Funcionario" action="#{funcionarioControle.pesquisarExcluir()}" ajax="false"/>
+                            <p:menuitem value="Funcionário" action="#{funcionarioControle.pesquisarExcluir()}" ajax="false"/>
                             <p:menuitem value="Cliente" action="#{clienteControle.pesquisarExcluir()}" ajax="false"/>
                         </p:submenu>
                         <p:submenu label="Usuário" icon="ui-icon-search">
@@ -82,7 +82,7 @@
                         </p:submenu>
                         <p:submenu label="Endereço" icon="ui-icon-search">
                             <p:menuitem value="Estado" action="#{estadoControle.pesquisarExcluir()}" ajax="false" />
-                            <p:menuitem value="Municipio" action="#{municipioControle.pesquisarExcluir()}" ajax="false" />
+                            <p:menuitem value="Município" action="#{municipioControle.pesquisarExcluir()}" ajax="false" />
                             <p:menuitem value="Bairro" action="#{bairroControle.pesquisarExcluir()}" ajax="false" />
                             <p:menuitem value="CEP" action="#{cepControle.pesquisarExcluir()}" ajax="false" />
                         </p:submenu>
@@ -103,12 +103,13 @@
                         </p:submenu>
                     </p:submenu>
                 </p:menubar>
+                <div id="sair">
+                <h:outputLink value="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">
+                        <h:outputText value="Sair do sistema"/>
+                </h:outputLink>
+                </div>
             </h:form>
             <ui:insert name="center">
-                
-                <h:outputLink value="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">
-                        <h:outputText value="Sair"/>
-                </h:outputLink>
                 
             </ui:insert>
         </div>
