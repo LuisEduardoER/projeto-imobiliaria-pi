@@ -196,6 +196,14 @@ public class ImovelControle {
         pesquisa = false;
         return "pesqImovelAlterar";
     }
+    public String pesquisarImovelFoto() {
+        if (imovel != null) {
+            limpa();
+            model = null;
+        }
+        pesquisa = false;
+        return "pesqArquivoMostrar";
+    }
     
     public String pesquisarExcluir() {
         if (imovel != null) {

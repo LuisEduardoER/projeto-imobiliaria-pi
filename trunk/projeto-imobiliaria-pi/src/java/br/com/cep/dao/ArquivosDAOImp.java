@@ -35,4 +35,14 @@ public class ArquivosDAOImp extends BaseDAOImp<Arquivos, Long> implements Arquiv
     public List<Arquivos> procuraArquivosPorNome(String nome) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public List<Arquivos> procuraFotoId(Long imovel_id) throws Exception {
+        abreConexao();
+        Query query = session.createQuery("from Arquivos a WHERE a.imovel_id = :id");
+        query.setString("id", "%" +imovel_id+ "%");
+        List<Arquivos> arquivos = query.list();
+        session.close();
+        return arquivos;
+    }
 }

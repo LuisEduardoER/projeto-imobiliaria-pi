@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface ArquivosDAO extends BaseDAO<Arquivos, Long>{ 
     public List<Arquivos> procuraArquivosPorNome(String nome) throws Exception;
+    public List<Arquivos> procuraFotoId(Long id) throws Exception;
 }
