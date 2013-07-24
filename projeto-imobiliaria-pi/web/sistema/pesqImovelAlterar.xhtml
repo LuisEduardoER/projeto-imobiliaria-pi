@@ -16,7 +16,7 @@
                     <h:form id="formPesqEstado">
                         <h1 style="color:#000040">Pesquisar Imóveis</h1>
                         <h:panelGrid style="margin-bottom: 50px;" columns="3">
-                            <h:outputLabel value="Código" />
+                            <h:outputLabel value="Código do imóvel:" />
                             <p:inputText id="nome" value="#{imovelControle.imovel.codigo}" />
                             <p:commandButton value="Pesquisar" ajax="false" action="#{imovelControle.pesquisaImovel()}" />
                         </h:panelGrid>
