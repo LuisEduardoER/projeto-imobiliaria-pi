@@ -49,5 +49,41 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
         session.close();
         return imoveis;
     }
+
+    @Override
+    public List<Imovel> todosImoveisApartamento(String tipoImovel) throws Exception {
+        abreConexao();
+        Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 1");
+        List<Imovel> imoveis = query.list();
+        session.close();
+        return imoveis;
+    }
+
+    @Override
+    public List<Imovel> todosImoveisComercial(String tipoImovel) throws Exception {
+        abreConexao();
+        Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 3");
+        List<Imovel> imoveis = query.list();
+        session.close();
+        return imoveis;
+    }
+
+    @Override
+    public List<Imovel> todosImoveisTerreno(String tipoImovel) throws Exception {
+        abreConexao();
+        Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 4");
+        List<Imovel> imoveis = query.list();
+        session.close();
+        return imoveis;
+    }
+
+    @Override
+    public List<Imovel> todosImoveisSitio(String tipoImovel) throws Exception {
+        abreConexao();
+        Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 6");
+        List<Imovel> imoveis = query.list();
+        session.close();
+        return imoveis;
+    }
     
 }
