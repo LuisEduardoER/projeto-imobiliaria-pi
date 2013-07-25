@@ -266,6 +266,43 @@ public class ImovelControle {
         }
     }
     
+    public void todosImoveisApartamento() {
+        imovelDao = new ImovelDAOImp();
+        try {
+            model = new ListDataModel(imovelDao.todosImoveisApartamento(null));
+        } catch (Exception ex) {
+            System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
+        }
+    }
+    
+    public void todosImoveisComercial() {
+        imovelDao = new ImovelDAOImp();
+        try {
+            model = new ListDataModel(imovelDao.todosImoveisComercial(null));
+        } catch (Exception ex) {
+            System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
+        }
+    }
+    
+    public void todosImoveisTerreno() {
+        imovelDao = new ImovelDAOImp();
+        try {
+            model = new ListDataModel(imovelDao.todosImoveisTerreno(null));
+        } catch (Exception ex) {
+            System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
+        }
+    }
+    
+    public void todosImoveisSitio() {
+        imovelDao = new ImovelDAOImp();
+        try {
+            model = new ListDataModel(imovelDao.todosImoveisSitio(null));
+        } catch (Exception ex) {
+            System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
+        }
+        limpa();
+    }
+    
     public void pesquisaCliente() {
         EnderecoUtil endUtil;
         if (cliente.getNome() != null) {
