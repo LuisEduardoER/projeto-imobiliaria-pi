@@ -40,9 +40,16 @@
                 </div>
             </div>	
             <div id="center">
-                <c:forEach var="imo" items="#{imovelControle.model}">   
-                    <div>
-                        <p>#{imo.sala}</p>
+                <div id="tituloImoveis">
+                    <h2>Imóveis</h2>
+                </div>
+                <c:forEach var="imo" items="#{imovelControle.imov}">   
+                    <div id="listaImoveis">
+                        <h:graphicImage id="imagemImovel" url="imagensImoveis/imovel.jpg" style="padding: 10px;" width="150" height="150"  />
+                        <p style="color:#B00000">#{imo.tipoImovel.tipo}</p>
+                        <p>#{imo.endereco.cep.bairro.nome}, #{imo.endereco.cep.bairro.municipio.nome}</p>
+                        <p>R$ #{imo.valor}</p>
+                        <a href="#"><img src="imagens/+.png" width="30" height="30" style="float: right; margin-right: 10px" /></a>
                     </div>
                 </c:forEach>
             </div>
