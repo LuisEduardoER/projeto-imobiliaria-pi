@@ -35,6 +35,7 @@ public class VendaControle {
     private Venda venda;
     private VendaDAO vendaDao;
     private DataModel model;
+    private DataModel modelVenda;
     private DataModel modelFuncionario;
     private DataModel modelImovel;
     private boolean pesquisa = false;
@@ -200,4 +201,26 @@ public class VendaControle {
         imovel = (Imovel) modelImovel.getRowData();
         pesquisa = false;
     }
+    
+    public void pesquisaVendaRelatorio() {
+        vendaDao = new VendaDAOImp();
+        if(venda.getDataVenda()!= null){
+            try {
+            model = new ListDataModel(vendaDao.procuraVendaPorData(venda.getDataVenda()));
+            } catch(Exception ex) {
+                System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
+            }
+        }
+    }
+    
+    public String pesquisaRelatorio() {
+        if(venda != null) {
+            limpa();
+            modelVenda = null;
+        }
+        pesquisa = false;
+        return "pesqVendaAlterar";
+    }
+    
+    
 }
