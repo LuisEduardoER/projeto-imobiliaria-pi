@@ -266,14 +266,16 @@ public class ImovelControle {
         }
     }
     
-    public void todosImoveisApartamento() {
+    public String listaImoveisApartamento() {
         imovelDao = new ImovelDAOImp();
         try {
-            model = new ListDataModel(imovelDao.todosImoveisApartamento(null));
+            model = new ListDataModel(imovelDao.todosImoveisApartamento());
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
+        return "imoveisApartamento";
     }
+    
     
     public void todosImoveisComercial() {
         imovelDao = new ImovelDAOImp();

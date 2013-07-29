@@ -24,15 +24,16 @@ body{background:url(imagens/bg.jpg); background-position:top; background-repeat:
 
 #slides {width: 75%; margin-top:10px; max-width: 800px; margin-left: 50px; clear: both; margin-bottom:50px; }
 
-#busca {margin-top:60px; margin: 0 auto; width:710px; height:400px; }
+#busca {margin-top:60px; margin: 0 auto; width:710px; height:250px; }
 #busca h2 {margin-left:260px; color: #000040; margin-bottom:10px; font-size:23px; }
 #busca h4 {margin-left:270px; margin-bottom:20px; font-size:14px; }
+
+#imoveisDestaque{ width:710px; height:250px; background: red; margin-bottom: 50px}
 
 #casa, #apartamento, #comercial, #terreno {float:left; margin-right:20px;}
 #sitio {float:right; width:150px; height:100px;}
 
-.selTip{display:block; font-size: 12px; margin:0 auto; margin-top:11px; width:62px; height:22px; background:url(imagens/selecione.png); }
-	
+.selTip{display:block; font-size: 12px; margin:0 auto; margin-top:11px; width:62px; height:22px; background:url(imagens/selecione.png); }	
 .selTip:hover{background-position:right;}
 
 #imgButton{margin-left: 310px; margin-top: 15px;}

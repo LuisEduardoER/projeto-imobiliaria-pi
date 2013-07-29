@@ -51,7 +51,7 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
     }
 
     @Override
-    public List<Imovel> todosImoveisApartamento(String tipoImovel) throws Exception {
+    public List<Imovel> todosImoveisApartamento() throws Exception {
         abreConexao();
         Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 1");
         List<Imovel> imoveis = query.list();

@@ -55,7 +55,7 @@
         </init-param>
         <init-param>
             <param-name>uploadDirectory</param-name>
-            <param-value>D:\arquivos</param-value>
+            <param-value>D:\Desktop\SistemaCEP\web\imagensImoveis\</param-value>
         </init-param>
     </filter>
     <filter-mapping>
