@@ -47,6 +47,15 @@ public class ImovelControle {
     private Cep cep;
     private Cliente cliente;
     private DataModel modelCliente;
+    private List<Imovel> imov;
+
+    public List<Imovel> getImov() {
+        return imov;
+    }
+
+    public void setImov(List<Imovel> imov) {
+        this.imov = imov;
+    }
     
     public DataModel getModelCliente() {
         return modelCliente;
@@ -257,52 +266,55 @@ public class ImovelControle {
         }
     }
     
-    public void todosImoveisCasa() {
+    public String listaImoveisCasa() {
         imovelDao = new ImovelDAOImp();
         try {
-            model = new ListDataModel(imovelDao.todosImoveisCasa(null));
+            imov = imovelDao.todosImoveisCasa();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
+        return "imoveis";
     }
     
     public String listaImoveisApartamento() {
         imovelDao = new ImovelDAOImp();
         try {
-            model = new ListDataModel(imovelDao.todosImoveisApartamento());
+            imov = imovelDao.todosImoveisApartamento();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
-        return "imoveisApartamento";
+        return "imoveis";
     }
     
     
-    public void todosImoveisComercial() {
+    public String listaImoveisComercial() {
         imovelDao = new ImovelDAOImp();
         try {
-            model = new ListDataModel(imovelDao.todosImoveisComercial(null));
+            imov = imovelDao.todosImoveisComercial();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
+        return "imoveis";
     }
     
-    public void todosImoveisTerreno() {
+    public String listaImoveisTerreno() {
         imovelDao = new ImovelDAOImp();
         try {
-            model = new ListDataModel(imovelDao.todosImoveisTerreno(null));
+            imov = imovelDao.todosImoveisTerreno();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
+        return "imoveis";
     }
     
-    public void todosImoveisSitio() {
+    public String listaImoveisSitio() {
         imovelDao = new ImovelDAOImp();
         try {
-            model = new ListDataModel(imovelDao.todosImoveisSitio(null));
+            imov = imovelDao.todosImoveisSitio();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
-        limpa();
+        return "imoveis";
     }
     
     public void pesquisaCliente() {

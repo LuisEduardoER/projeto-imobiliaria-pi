@@ -42,7 +42,7 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
     }
 
     @Override
-    public List<Imovel> todosImoveisCasa(String tipoImovel) throws Exception {
+    public List<Imovel> todosImoveisCasa() throws Exception {
         abreConexao();
         Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 2");
         List<Imovel> imoveis = query.list();
@@ -60,7 +60,7 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
     }
 
     @Override
-    public List<Imovel> todosImoveisComercial(String tipoImovel) throws Exception {
+    public List<Imovel> todosImoveisComercial() throws Exception {
         abreConexao();
         Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 3");
         List<Imovel> imoveis = query.list();
@@ -69,7 +69,7 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
     }
 
     @Override
-    public List<Imovel> todosImoveisTerreno(String tipoImovel) throws Exception {
+    public List<Imovel> todosImoveisTerreno() throws Exception {
         abreConexao();
         Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 4");
         List<Imovel> imoveis = query.list();
@@ -78,7 +78,7 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
     }
 
     @Override
-    public List<Imovel> todosImoveisSitio(String tipoImovel) throws Exception {
+    public List<Imovel> todosImoveisSitio() throws Exception {
         abreConexao();
         Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 6");
         List<Imovel> imoveis = query.list();

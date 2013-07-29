@@ -58,33 +58,41 @@
                         <img src="imagens/casas.png" />
                         <div class="selTip">
                         <h:form>
-                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="#{imovelControle.listaImoveisApartamento()}"/>
+                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="#{imovelControle.listaImoveisCasa()}"/>
                         </h:form>
                         </div>
                     </div>
                     <div id="apartamento">
                         <img src="imagens/apartamento.png" />
-                        <form method="get" action="imoveisApartamento.faces">
-                            <input type="submit" value="Pesquisar" class="selTip" />
-                        </form>
+                        <div class="selTip">
+                        <h:form>
+                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="#{imovelControle.listaImoveisApartamento()}"/>
+                        </h:form>
+                        </div>
                     </div>
                     <div id="comercial">
                         <img src="imagens/comercial.png" />
-                        <form method="get" action="imoveisComercial.faces">
-                            <input type="submit" value="Pesquisar" class="selTip" />
-                        </form>
+                        <div class="selTip">
+                        <h:form>
+                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="#{imovelControle.listaImoveisComercial()}"/>
+                        </h:form>
+                        </div>
                     </div>
                     <div id="terreno">
                         <img src="imagens/terreno.png" />
-                        <form method="get" action="imoveisTerreno.faces">
-                            <input type="submit" value="Pesquisar" class="selTip" />
-                        </form>
+                        <div class="selTip">
+                        <h:form>
+                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="#{imovelControle.listaImoveisTerreno()}"/>
+                        </h:form>
+                        </div>
                     </div>
                     <div id="sitio">
                         <img src="imagens/sitio.png" />
-                        <form method="get" action="imoveisSitio.faces">
-                            <input type="submit" value="Pesquisar" class="selTip" />
-                        </form>
+                        <div class="selTip">
+                        <h:form>
+                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="#{imovelControle.listaImoveisSitio()}"/>
+                        </h:form>
+                        </div>
                     </div>
                 </div>
                 <div id="imoveisDestaque">
