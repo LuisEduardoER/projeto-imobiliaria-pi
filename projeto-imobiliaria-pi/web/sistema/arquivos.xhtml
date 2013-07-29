@@ -123,12 +123,20 @@
                                 <h:outputText value="Listando Imóvel(s)"/>
                             </f:facet>
                             <p:column>
-                                <f:facet name="header">Id</f:facet>
-                                <h:outputText value="#{imovelGrid.id}" />
+                                <f:facet name="header">Código</f:facet>
+                                <h:outputText value="#{imovelGrid.codigo}" />
                             </p:column>
                             <p:column>
-                                <f:facet name="header">Estado</f:facet>
-                                <h:outputText value="#{imovelGrid.sala}" />
+                                <f:facet name="header">Cep:</f:facet>
+                                <h:outputText value="#{imovelGrid.endereco.cep.cep}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Rua:</f:facet>
+                                <h:outputText value="#{imovelGrid.endereco.cep.logradouro}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Bairro:</f:facet>
+                                <h:outputText value="#{imovelGrid.endereco.cep.bairro.nome}" />
                             </p:column>
                             <p:column>
                                 <p:commandButton icon="ui-icon-check" title="Selecione um Municipio" ajax="false"
