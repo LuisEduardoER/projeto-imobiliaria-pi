@@ -28,19 +28,28 @@ body{background:url(imagens/bg.jpg); background-position:top; background-repeat:
 #busca h2 {margin-left:260px; color: #000040; margin-bottom:10px; font-size:23px; }
 #busca h4 {margin-left:270px; margin-bottom:20px; font-size:14px; }
 
-#listaImoveis {width:180px; height:275px; margin-bottom: 30px;  background:#F0F0F0; padding-left: 10px; font-size: 15px; color:#393939; margin-left: 30px}
-#listaImoveis p {margin-bottom: 1px; font-family: Segoe UI; font-weight:bold;}
+#listaImoveis {width:200px; height:auto; float:left; margin-bottom: 30px; border: 1px solid #978C8C; border-radius: 10px;  background:#FFF; padding-left: 10px; font-size: 14px; color:#393939; margin-left: 30px}
+#listaImoveis p {margin-bottom: 1px; font-family: Segoe UI;}
+
+#listandoImoveis {width:930px; height:275px; float:left; margin-bottom: 30px;  background:#FFF; padding-left: 10px; font-size: 15px; color:#393939; margin-left: 30px}
+#listandoImoveis p {font-family: Segoe UI;}
 
 #imoveisDestaque{ width:710px; height:250px; background: red; margin-bottom: 50px}
 
 #casa, #apartamento, #comercial, #terreno {float:left; margin-right:20px;}
 #sitio {float:right; width:150px; height:100px;}
 
-#tituloImoveis { width:900px; margin-left: 50px; margin-bottom: 30px; border-bottom: 3px solid #C70000; }
-#tituloImoveis h2 { margin: 15px 0 15px 30px; font-size:23px; color: #000040;}
+#tituloImoveis { width:900px; margin-left: 50px; margin-bottom: 30px; border-bottom: 3px solid #685E5E; }
+#tituloImoveis h2 { margin: 15px 0 15px 30px; font-size:23px; color: #403939;}
+#tituloImo p { margin: 15px 0 15px 30px; font-size:23px; color: #000040;}
+#tituloImo {clear: both;}
+#listandoImoveis {float:left;}
 
 .selTip{display:block; font-size: 12px; margin:0 auto; margin-top:11px; width:62px; height:22px; background:url(imagens/selecione.png); }	
 .selTip:hover{background-position:right;}
+
+.selTip2{display:block; font-size: 12px; float:right; padding-bottom: 10px; width:62px; height:22px;}	
+.selTip2:hover{background-position:right;}
 
 #imagemImovel {border-radius:15px;}
 #imgButton{margin-left: 310px; margin-top: 15px;}

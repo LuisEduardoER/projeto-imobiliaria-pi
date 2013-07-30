@@ -43,13 +43,17 @@
                 <div id="tituloImoveis">
                     <h2>Imóveis</h2>
                 </div>
-                <c:forEach var="imo" items="#{imovelControle.imov}">   
+                <c:forEach var="imo" items="#{imovelControle.listaTodosImoveis}">   
                     <div id="listaImoveis">
-                        <h:graphicImage id="imagemImovel" url="imagensImoveis/imovel.jpg" style="padding: 10px;" width="150" height="150"  />
-                        <p style="color:#B00000">#{imo.tipoImovel.tipo}</p>
+                        <h:graphicImage value="imagensImoveis/#{imo.arquivos.get(0).nome}" style="padding: 10px 0 10px 0;" width="190" height="170"  />
+                        <p style="font-size: 15px; font-weight:bold; color:#B00000">#{imo.tipoImovel.tipo}</p>
                         <p>#{imo.endereco.cep.bairro.nome}, #{imo.endereco.cep.bairro.municipio.nome}</p>
-                        <p>R$ #{imo.valor}</p>
-                        <a href="#"><img src="imagens/+.png" width="30" height="30" style="float: right; margin-right: 10px" /></a>
+                        <p style="font-size: 19px; font-weight:bold;">R$ #{imo.valor}</p>
+                        <div style="padding:0 10px 30px 0;">
+                        <h:form>
+                            <p:commandButton value="+" style="float: right; font-weight:bold; font-size: 10px;" action="#{imovelControle.imovelSelecionado(imo.id)}"/>
+                        </h:form>
+                        </div>
                     </div>
                 </c:forEach>
             </div>

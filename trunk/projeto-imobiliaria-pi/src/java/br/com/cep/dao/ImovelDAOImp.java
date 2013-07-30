@@ -40,20 +40,29 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
         session.close();
         return imoveis;
     }
-
+    
     @Override
-    public List<Imovel> todosImoveisCasa() throws Exception {
+    public List<Imovel> todosImoveis() throws Exception {
         abreConexao();
-        Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 2");
+        Query query = session.createQuery("from Imovel");
         List<Imovel> imoveis = query.list();
         session.close();
         return imoveis;
     }
 
     @Override
+    public List<Imovel> todosImoveisCasa() throws Exception {
+        abreConexao();
+        Query query = session.createQuery("from Imovel imo JOIN FETCH imo.arquivos WHERE imo.tipoImovel = 2");
+        List<Imovel> imoveis = query.list();
+        session.close();
+        return imoveis;
+    }
+    
+    @Override
     public List<Imovel> todosImoveisApartamento() throws Exception {
         abreConexao();
-        Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 1");
+        Query query = session.createQuery("from Imovel imo JOIN FETCH imo.arquivos WHERE imo.tipoImovel = 1");
         List<Imovel> imoveis = query.list();
         session.close();
         return imoveis;
@@ -62,7 +71,7 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
     @Override
     public List<Imovel> todosImoveisComercial() throws Exception {
         abreConexao();
-        Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 3");
+        Query query = session.createQuery("from Imovel imo JOIN FETCH imo.arquivos WHERE imo.tipoImovel = 3");
         List<Imovel> imoveis = query.list();
         session.close();
         return imoveis;
@@ -71,7 +80,7 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
     @Override
     public List<Imovel> todosImoveisTerreno() throws Exception {
         abreConexao();
-        Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 4");
+        Query query = session.createQuery("from Imovel imo JOIN FETCH imo.arquivos WHERE imo.tipoImovel = 4");
         List<Imovel> imoveis = query.list();
         session.close();
         return imoveis;
@@ -80,7 +89,26 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
     @Override
     public List<Imovel> todosImoveisSitio() throws Exception {
         abreConexao();
-        Query query = session.createQuery("from Imovel WHERE id_tipoImovel = 6");
+        Query query = session.createQuery("from Imovel imo JOIN FETCH imo.arquivos WHERE imo.tipoImovel = 6");
+        List<Imovel> imoveis = query.list();
+        session.close();
+        return imoveis;
+    }
+
+    @Override
+    public Imovel imovelSelecionado(Long id) throws Exception {
+        abreConexao();
+        Query query = session.createQuery("SELECT DISTINCT imo from Imovel imo JOIN FETCH imo.arquivos WHERE imo.id = :id");
+        query.setLong("id", id);
+        Imovel imoveis = (Imovel) query.uniqueResult();
+        session.close();
+        return imoveis;
+    }
+
+    @Override
+    public List<Imovel> listaTodosImoveis() throws Exception {
+        abreConexao();
+        Query query = session.createQuery("from Imovel imo JOIN FETCH imo.arquivos");
         List<Imovel> imoveis = query.list();
         session.close();
         return imoveis;
