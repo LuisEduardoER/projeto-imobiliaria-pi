@@ -44,7 +44,10 @@
                                           filterMatchMode="contains" style="width: 40px">  
                                     <h:outputText value="#{arquivos.id}" style="width: 40px" />  
                                 </p:column>  
-
+                                <p:column filterBy="#{arquivos.nome}" headerText="Foto"  
+                                          footerText="Foto" filterMatchMode="contains"> 
+                                    <h:graphicImage value="../imagensImoveis/#{arquivos.nome}" style="whidth:10px; height: 150px;" />
+                                </p:column>  
                                 <p:column filterBy="#{arquivos.nome}" headerText="Descrição"  
                                           footerText="Descrição" filterMatchMode="contains">  
                                     <h:outputText value="#{arquivos.nome}" />  

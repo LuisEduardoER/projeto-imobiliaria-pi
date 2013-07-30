@@ -33,7 +33,7 @@
                     <ul>
                         <li><a id="home" href="index.faces">Home</a></li>
                         <li><a id="empresa" href="empresa.faces">Empresa</a></li>
-                        <li><a id="imoveis" href="#">Imóveis</a></li>
+                        <li><a id="imoveis" href="imoveis.faces">Imóveis</a></li>
                         <li><a id="local" href="localizacao.faces">Localização</a></li>
                         <li><a id="contato" href="contato.faces">Contato</a></li>
                     </ul>
@@ -43,7 +43,7 @@
                 <div id="tituloImoveis">
                     <h2>Imóveis</h2>
                 </div>
-                <c:forEach var="imo" items="#{imovelControle.listaTodosImoveis}">   
+                <c:forEach var="imo" items="#{imovelControle.listaImoveisApartamento}">   
                     <div id="listaImoveis">
                         <h:graphicImage value="imagensImoveis/#{imo.arquivos.get(0).nome}" style="padding: 10px 0 10px 0;" width="190" height="170"  />
                         <p style="font-size: 15px; font-weight:bold; color:#B00000">#{imo.tipoImovel.tipo}</p>
