@@ -212,7 +212,7 @@ public class VendaControle {
         vendaDao = new VendaDAOImp();
         if(venda.getObservacao() != null){
             try {
-            modelRel = new ListDataModel(vendaDao.procuraVendaPorCresci(venda.getFuncionario().getCresci()));
+            modelRel = new ListDataModel(vendaDao.procuraVendaPorCresci(venda.getObservacao()));
             } catch(Exception ex) {
                 System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
             }

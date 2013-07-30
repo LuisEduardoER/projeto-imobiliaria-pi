@@ -48,7 +48,7 @@ public class VendaDAOImp extends BaseDAOImp<Venda, Long> implements VendaDAO{
     @Override
     public List<Venda> procuraVendaPorCresci(String cresci) throws Exception {
         abreConexao();
-        Query query = session.createQuery("from venda v inner join funcionario f where f.cresci like :cresci");
+        Query query = session.createQuery("from Venda v WHERE v.observacao like :cresci");
         query.setString("cresci", "%" +cresci+ "%");
         List<Venda> vendas = query.list();
         session.close();
