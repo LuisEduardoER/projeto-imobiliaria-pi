@@ -4,26 +4,20 @@
  */
 package br.com.cep.controle;
 
-import br.com.cep.dao.PerfilDAO;
-import br.com.cep.dao.PerfilDAOImp;
-import br.com.cep.dao.UsuarioDAO;
-import br.com.cep.dao.UsuarioDAOImp;
 import br.com.cep.dao.VendaDAO;
 import br.com.cep.dao.VendaDAOImp;
 import br.com.cep.entidade.Funcionario;
 import br.com.cep.entidade.Imovel;
-import br.com.cep.entidade.Perfil;
-import br.com.cep.entidade.Usuario;
 import br.com.cep.entidade.Venda;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.faces.model.SelectItem;
 
 /**
  *
@@ -35,9 +29,9 @@ public class VendaControle {
     private Venda venda;
     private VendaDAO vendaDao;
     private DataModel model;
-    private DataModel modelVenda;
     private DataModel modelFuncionario;
     private DataModel modelImovel;
+    private DataModel modelRel;
     private boolean pesquisa = false;
     private Funcionario funcionario;
     private Imovel imovel;
@@ -48,7 +42,11 @@ public class VendaControle {
         }
         return funcionario;
     }
-    
+
+    public DataModel getModelRel() {
+        return modelRel;
+    }
+
     public Imovel getImovel() {
         if(imovel == null){
             imovel = new Imovel();
@@ -202,25 +200,22 @@ public class VendaControle {
         pesquisa = false;
     }
     
-    public void pesquisaVendaRelatorio() {
+    //relatorio vendas
+    
+    public String pesquisarRel() {
+        venda = new Venda();
+        pesquisa = false;
+        return "geraRelatorio";
+    }
+    
+    public void pesquisaRelatorio() {
         vendaDao = new VendaDAOImp();
-        if(venda.getDataVenda()!= null){
+        if(venda.getObservacao() != null){
             try {
-            model = new ListDataModel(vendaDao.procuraVendaPorData(venda.getDataVenda()));
+            modelRel = new ListDataModel(vendaDao.procuraVendaPorCresci(venda.getFuncionario().getCresci()));
             } catch(Exception ex) {
                 System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
             }
         }
     }
-    
-    public String pesquisaRelatorio() {
-        if(venda != null) {
-            limpa();
-            modelVenda = null;
-        }
-        pesquisa = false;
-        return "pesqVendaAlterar";
-    }
-    
-    
 }
