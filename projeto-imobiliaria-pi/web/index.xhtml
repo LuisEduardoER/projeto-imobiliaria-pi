@@ -5,15 +5,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <title>Rede Imobiliária - Home</title>
-            <link rel="stylesheet" type="text/css" href="style.css"></link>
-            <link rel="stylesheet" href="flexslider.css" type="text/css" media="screen"></link>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-            <script src="js/jquery.flexslider-min.js"></script>
-            <script type="text/javascript">
-                $(window).load(function() {
-                    $('.flexslider').flexslider();
-                });
-            </script>
+        <link rel="stylesheet" type="text/css" href="style.css"></link>
+        <link rel="stylesheet" href="flexslider.css" type="text/css" media="screen"></link>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script src="js/jquery.flexslider-min.js"></script>
+        <script type="text/javascript">
+            $(window).load(function() {
+                $('.flexslider').flexslider();
+            });
+        </script>
     </head>
     <body>
         <div id="geral">
@@ -21,9 +21,9 @@
                 <img src="imagens/logo.png" class="logo"/>
                 <div id="tels">
                     <img src="imagens/tel.png" width="427" height="80" border="0" usemap="#Map"/>
-                        <map name="Map" id="Map">
-                            <area shape="rect" coords="299,41,393,62" href="contato.faces"></area>
-                        </map>
+                    <map name="Map" id="Map">
+                        <area shape="rect" coords="299,41,393,62" href="contato.faces"></area>
+                    </map>
                 </div>
                 <div id="menu">
                     <ul>
@@ -57,46 +57,61 @@
                     <div id="casa">
                         <img src="imagens/casas.png" />
                         <div class="selTip">
-                        <h:form>
-                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisCasa.faces"/>
-                        </h:form>
+                            <h:form>
+                                <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisCasa.faces"/>
+                            </h:form>
                         </div>
                     </div>
                     <div id="apartamento">
                         <img src="imagens/apartamento.png" />
                         <div class="selTip">
-                        <h:form>
-                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisApartamento.faces"/>
-                        </h:form>
+                            <h:form>
+                                <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisApartamento.faces"/>
+                            </h:form>
                         </div>
                     </div>
                     <div id="comercial">
                         <img src="imagens/comercial.png" />
                         <div class="selTip">
-                        <h:form>
-                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisComercial.faces"/>
-                        </h:form>
+                            <h:form>
+                                <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisComercial.faces"/>
+                            </h:form>
                         </div>
                     </div>
                     <div id="terreno">
                         <img src="imagens/terreno.png" />
                         <div class="selTip">
-                        <h:form>
-                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisTerreno.faces"/>
-                        </h:form>
+                            <h:form>
+                                <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisTerreno.faces"/>
+                            </h:form>
                         </div>
                     </div>
                     <div id="sitio">
                         <img src="imagens/sitio.png" />
                         <div class="selTip">
-                        <h:form>
-                            <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisSitio.faces"/>
-                        </h:form>
+                            <h:form>
+                                <p:commandButton value="Pesquisar" style="background: none; padding: 2px;" action="imoveisSitio.faces"/>
+                            </h:form>
                         </div>
                     </div>
                 </div>
                 <div id="imoveisDestaque">
-                    <h3>Imóveis em destaque</h3>
+                    <div id="tituloImoveis">
+                        <h2>Imóveis em destaque</h2>
+                    </div>
+                    <c:forEach var="imo" items="#{imovelControle.imoveisDestaque}">   
+                        <div id="listaImoveis">
+                            <h:graphicImage value="imagensImoveis/#{imo.arquivos.get(0).nome}" style="padding: 10px 0 10px 0;" width="190" height="170"  />
+                            <p style="font-size: 15px; font-weight:bold; color:#B00000">#{imo.tipoImovel.tipo}</p>
+                            <p>#{imo.endereco.cep.bairro.nome}, #{imo.endereco.cep.bairro.municipio.nome}</p>
+                            <p style="font-size: 19px; font-weight:bold;">R$ #{imo.valor}</p>
+                            <div style="padding:0 10px 30px 0;">
+                                <h:form>
+                                    <p:commandButton value="+" style="float: right; font-weight:bold; font-size: 10px;" action="#{imovelControle.imovelSelecionado(imo.id)}"/>
+                                </h:form>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>		

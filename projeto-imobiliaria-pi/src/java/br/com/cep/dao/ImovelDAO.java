@@ -20,5 +20,6 @@ public interface ImovelDAO extends BaseDAO<Imovel, Long>{
     public List<Imovel> todosImoveisSitio() throws Exception;
     public List<Imovel> todosImoveis() throws Exception;
     public List<Imovel> listaTodosImoveis() throws Exception;
+    public List<Imovel> imoveisDestaque() throws Exception;
     Imovel imovelSelecionado(Long id) throws Exception;
 }

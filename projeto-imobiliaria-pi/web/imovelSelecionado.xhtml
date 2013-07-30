@@ -43,11 +43,21 @@
                 <div id="tituloImoveis">
                     <p style="font-size: 20px; font-weight:bold;color:#B00000; float:left; margin-right: 20px">#{imovelControle.imovel.tipoImovel.tipo}, #{imovelControle.imovel.endereco.cep.bairro.municipio.nome}</p> <p style="font-size: 17px; color:#393939; float:left; font-weight:bold; margin-right: 3px">código </p><h2>#{imovelControle.imovel.codigo}</h2>
                 </div>
-                <div id="listandoImoveis">
-                    <p:galleria value="#" var="image" panelWidth="500" panelHeight="313" >  
-                        <p:graphicImage value="#" />  
-                    </p:galleria> 
-                    <p style="font-size: 17px; font-weight:bold; color:#B00000">#{imovelControle.imovel.tipoImovel.tipo}</p>
+                <div>
+                    <div id="imovelSelecionadoInf">
+                        <h4>• Informações sobre o imóvel</h4>
+                    <p style="margin-top: 20px;">Código: #{imovelControle.imovel.codigo}</p>
+                    <p>Tipo do imóvel: #{imovelControle.imovel.tipoImovel.tipo}</p>
+                    <p>Bairro: #{imovelControle.imovel.endereco.cep.bairro.nome}</p>
+                    <p>Cidade: #{imovelControle.imovel.endereco.cep.bairro.municipio.nome}</p>
+                    <p>Área total: #{imovelControle.imovel.areaTotal} m²</p>
+                    <p>Valor: R$#{imovelControle.imovel.valor}</p>
+                    <p>Salas: #{imovelControle.imovel.sala}</p>
+                    <p>Dormitórios: #{imovelControle.imovel.dormitorio}</p>
+                    <p>Banheiros: #{imovelControle.imovel.banheiro}</p>
+                    <p>Suítes: #{imovelControle.imovel.suite}</p>
+                    <p>Garagens: #{imovelControle.imovel.garagem}</p>
+                    </div>
                 </div>
             </div>
         </div>		
