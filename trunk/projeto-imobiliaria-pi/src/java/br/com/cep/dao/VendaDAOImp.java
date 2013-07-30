@@ -7,6 +7,7 @@ package br.com.cep.dao;
 import br.com.cep.entidade.Venda;
 import java.util.Date;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 
 /**
@@ -14,6 +15,8 @@ import org.hibernate.Query;
  * @author Aluno
  */
 public class VendaDAOImp extends BaseDAOImp<Venda, Long> implements VendaDAO{
+    
+    private List<Venda> listaVenda;
 
     @Override
     public Venda pesquisaPorId(Long id) {
@@ -41,4 +44,15 @@ public class VendaDAOImp extends BaseDAOImp<Venda, Long> implements VendaDAO{
         session.close();
         return vendas;
     }
+
+    @Override
+    public List<Venda> procuraVendaPorCresci(String cresci) throws Exception {
+        abreConexao();
+        Query query = session.createQuery("from venda v inner join funcionario f where f.cresci like :cresci");
+        query.setString("cresci", "%" +cresci+ "%");
+        List<Venda> vendas = query.list();
+        session.close();
+        return vendas;
+    }
+
 }

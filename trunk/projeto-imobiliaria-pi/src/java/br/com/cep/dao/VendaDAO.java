@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface VendaDAO extends BaseDAO<Venda, Long>{
     public List<Venda> procuraVendaPorData(Date dataVenda) throws Exception;
+    public List<Venda> procuraVendaPorCresci(String cresci) throws Exception; 
 }
