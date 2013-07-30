@@ -17,7 +17,7 @@
                         <h1 style="color:#000040">Relatório de Venda por Funcionário</h1>
                         <h:panelGrid style="margin-bottom: 50px;" columns="3">
                             <h:outputLabel value="Perfil do usuário:" />
-                            <p:inputText id="nome" value="#{vendaControle.venda.funcionario.cresci}" />
+                            <p:inputText id="nome" value="#{vendaControle.venda.observacao}" />
                             <p:commandButton value="Pesquisar" ajax="false" action="#{vendaControle.pesquisaRelatorio()}" />
                         </h:panelGrid>
                         <p:dataTable id="gridRel" var="relGrid" paginator="true"  emptyMessage="Nenhum valor encontrado" value="#{vendaControle.modelRel}">
@@ -26,11 +26,11 @@
                                 <h:outputText value="Listando Vendas" />
                             </f:facet>
                             <p:column>
-                                <f:facet name="header">Nome: </f:facet>
-                                <h:outputText value="#{relGrid.funcionario.cresci}" />
+                                <f:facet name="header">Funcionário: </f:facet>
+                                <h:outputText value="#{relGrid.funcionario.nome}" />
                             </p:column>
                             <p:column>
-                                <f:facet name="header">Descrição </f:facet>
+                                <f:facet name="header">Valor: </f:facet>
                                 <h:outputText value="#{relGrid.imovel.valor}" />
                             </p:column>
                             <p:column>
@@ -38,6 +38,45 @@
                                 <h:commandLink action="#{relGrid.editar()}" value="Alterar"/>
                             </p:column>
                         </p:dataTable>
+
+                        <h:panelGrid columns="2">  
+                            <p:panel header="Exportar tudo">  
+                                <h:commandLink value="XLS    ">  
+                                    <p:dataExporter type="xls" target="gridRel" fileName="rel" />  
+                                </h:commandLink>  
+
+                                <h:commandLink value="PDF    ">  
+                                    <p:dataExporter type="pdf" target="gridRel" fileName="rel"/>  
+                                </h:commandLink>  
+
+                                <h:commandLink value="CSV    ">  
+                                    <p:dataExporter type="csv" target="gridRel" fileName="rel" />  
+                                </h:commandLink>  
+
+                                <h:commandLink value="XML">  
+                                    <p:dataExporter type="xml" target="gridRel" fileName="rel" />  
+                                </h:commandLink>  
+                            </p:panel>  
+
+                            <p:panel header="Exportar uma página">  
+                                <h:commandLink value="XLS    ">  
+                                    <p:dataExporter type="xls" target="gridRel" fileName="rel" pageOnly="true"/>  
+                                </h:commandLink>  
+
+                                <h:commandLink value="PDF    ">  
+                                    <p:dataExporter type="pdf" target="gridRel" fileName="rel" pageOnly="true"/>  
+                                </h:commandLink>  
+
+                                <h:commandLink value="CSV    ">  
+                                    <p:dataExporter type="csv" target="gridRel" fileName="rel" pageOnly="true"/>  
+                                </h:commandLink>  
+
+                                <h:commandLink value="XML">  
+                                    <p:dataExporter type="xml" target="gridRel" fileName="rel" pageOnly="true"/>  
+                                </h:commandLink>  
+                            </p:panel>  
+                        </h:panelGrid>  
+
                     </h:form>
                 </div>
             </ui:define>
@@ -45,3 +84,4 @@
     </h:body>
 </html>
 
+<!--Query query = session.createQuery("from venda v inner join funcionario f where f.cresci like :cresci");-->
