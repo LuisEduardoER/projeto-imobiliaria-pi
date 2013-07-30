@@ -334,6 +334,16 @@ public class ImovelControle {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
         return imov;
+    }   
+    
+    public List<Imovel> getImoveisDestaque() {
+        imovelDao = new ImovelDAOImp();
+        try {
+            imov = imovelDao.imoveisDestaque();
+        } catch (Exception ex) {
+            System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
+        }
+        return imov;
     }
     
     public void pesquisaCliente() {

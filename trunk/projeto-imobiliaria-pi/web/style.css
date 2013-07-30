@@ -31,10 +31,10 @@ body{background:url(imagens/bg.jpg); background-position:top; background-repeat:
 #listaImoveis {width:200px; height:auto; float:left; margin-bottom: 30px; border: 1px solid #978C8C; border-radius: 10px;  background:#FFF; padding-left: 10px; font-size: 14px; color:#393939; margin-left: 30px}
 #listaImoveis p {margin-bottom: 1px; font-family: Segoe UI;}
 
-#listandoImoveis {width:930px; height:275px; float:left; margin-bottom: 30px;  background:#FFF; padding-left: 10px; font-size: 15px; color:#393939; margin-left: 30px}
+#listandoImoveis {width:930px; height:275px; float:left; margin-bottom: 150px;  background:#FFF; padding-left: 10px; font-size: 15px; color:#393939; margin-left: 30px}
 #listandoImoveis p {font-family: Segoe UI;}
 
-#imoveisDestaque{ width:710px; height:250px; background: red; margin-bottom: 50px}
+#imoveisDestaque{ width:1000px; height:auto;margin-bottom: 50px}
 
 #casa, #apartamento, #comercial, #terreno {float:left; margin-right:20px;}
 #sitio {float:right; width:150px; height:100px;}
@@ -43,7 +43,10 @@ body{background:url(imagens/bg.jpg); background-position:top; background-repeat:
 #tituloImoveis h2 { margin: 15px 0 15px 30px; font-size:23px; color: #403939;}
 #tituloImo p { margin: 15px 0 15px 30px; font-size:23px; color: #000040;}
 #tituloImo {clear: both;}
-#listandoImoveis {float:left;}
+
+#imovelSelecionadoInf {width: 410px; border-radius: 25px 0 0 25px; margin-bottom: 30px; height: 360px; background:#FFF; float:left;}
+#imovelSelecionadoInf p {font-size: 12px; margin: 0px 0 5px 30px; }
+#imovelSelecionadoInf h4 {font-size: 18px; color: #818181; font-family: Segoe UI; margin-left: 20px; margin-top: 10px; border-bottom: 1px solid #CCCCCC; width: 350px; padding-bottom: 10px;}
 
 .selTip{display:block; font-size: 12px; margin:0 auto; margin-top:11px; width:62px; height:22px; background:url(imagens/selecione.png); }	
 .selTip:hover{background-position:right;}
