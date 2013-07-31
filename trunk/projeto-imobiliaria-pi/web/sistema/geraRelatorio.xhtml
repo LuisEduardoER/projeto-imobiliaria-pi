@@ -16,26 +16,29 @@
                     <h:form id="formPesqPerfil">
                         <h1 style="color:#000040">Relatório de Venda por Funcionário</h1>
                         <h:panelGrid style="margin-bottom: 50px;" columns="3">
-                            <h:outputLabel value="Perfil do usuário:" />
+                            <h:outputLabel value="Cresci:" />
                             <p:inputText id="nome" value="#{vendaControle.venda.observacao}" />
                             <p:commandButton value="Pesquisar" ajax="false" action="#{vendaControle.pesquisaRelatorio()}" />
                         </h:panelGrid>
                         <p:dataTable id="gridRel" var="relGrid" paginator="true"  emptyMessage="Nenhum valor encontrado" value="#{vendaControle.modelRel}">
                             <f:facet name="header">
-                                <h2>Alterar</h2>
                                 <h:outputText value="Listando Vendas" />
                             </f:facet>
                             <p:column>
-                                <f:facet name="header">Funcionário: </f:facet>
+                                <f:facet name="header">Funcionário </f:facet>
                                 <h:outputText value="#{relGrid.funcionario.nome}" />
                             </p:column>
                             <p:column>
-                                <f:facet name="header">Valor: </f:facet>
+                                <f:facet name="header">Tipo do Imóvel </f:facet>
+                                <h:outputText value="#{relGrid.imovel.tipoImovel.tipo}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Valor do Imóvel </f:facet>
                                 <h:outputText value="#{relGrid.imovel.valor}" />
                             </p:column>
                             <p:column>
-                                <f:facet name="header">Alterar </f:facet>
-                                <h:commandLink action="#{relGrid.editar()}" value="Alterar"/>
+                                <f:facet name="header">Data da Venda </f:facet>
+                                <h:outputText value="#{relGrid.dataVenda}" />
                             </p:column>
                         </p:dataTable>
 
