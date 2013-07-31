@@ -12,6 +12,7 @@ import br.com.cep.dao.StatusDAO;
 import br.com.cep.dao.StatusDAOImp;
 import br.com.cep.dao.TipoImovelDAO;
 import br.com.cep.dao.TipoImovelDAOImp;
+import br.com.cep.entidade.Arquivos;
 import br.com.cep.entidade.Cep;
 import br.com.cep.entidade.Cliente;
 import br.com.cep.entidade.Endereco;
@@ -48,6 +49,11 @@ public class ImovelControle {
     private Cliente cliente;
     private DataModel modelCliente;
     private List<Imovel> imov;
+    private List<Arquivos> arquivos;
+
+    public List<Arquivos> getArquivos() {
+        return arquivos;
+    }
 
     public List<Imovel> getImov() {
         return imov;
@@ -320,6 +326,7 @@ public class ImovelControle {
         imovelDao = new ImovelDAOImp();
         try {
             imovel = imovelDao.imovelSelecionado(id);
+            arquivos =  imovel.getArquivos();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
@@ -339,7 +346,7 @@ public class ImovelControle {
     public List<Imovel> getImoveisDestaque() {
         imovelDao = new ImovelDAOImp();
         try {
-            imov = imovelDao.imoveisDestaque();
+            imov = imovelDao.todosImoveis();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }

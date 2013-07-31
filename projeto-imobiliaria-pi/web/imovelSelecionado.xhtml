@@ -11,13 +11,6 @@
         <title>Rede Imobiliária - Imóveis</title>
         <link rel="stylesheet" type="text/css" href="style.css"></link>
         <link rel="stylesheet" href="flexslider.css" type="text/css" media="screen"></link>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-        <script src="js/jquery.flexslider-min.js"></script>
-        <script type="text/javascript">
-            $(window).load(function() {
-                $('.flexslider').flexslider();
-            });
-        </script>
     </h:head>
     <h:body>
         <div id="geral">
@@ -43,7 +36,6 @@
                 <div id="tituloImoveis">
                     <p style="font-size: 20px; font-weight:bold;color:#B00000; float:left; margin-right: 20px">#{imovelControle.imovel.tipoImovel.tipo}, #{imovelControle.imovel.endereco.cep.bairro.municipio.nome}</p> <p style="font-size: 17px; color:#393939; float:left; font-weight:bold; margin-right: 3px">código </p><h2>#{imovelControle.imovel.codigo}</h2>
                 </div>
-                <div>
                     <div id="imovelSelecionadoInf">
                         <h4>• Informações sobre o imóvel</h4>
                     <p style="margin-top: 20px;">Código: #{imovelControle.imovel.codigo}</p>
@@ -51,14 +43,18 @@
                     <p>Bairro: #{imovelControle.imovel.endereco.cep.bairro.nome}</p>
                     <p>Cidade: #{imovelControle.imovel.endereco.cep.bairro.municipio.nome}</p>
                     <p>Área total: #{imovelControle.imovel.areaTotal} m²</p>
-                    <p>Valor: R$#{imovelControle.imovel.valor}</p>
+                    <p>Valor: R$ #{imovelControle.imovel.valor}</p>
                     <p>Salas: #{imovelControle.imovel.sala}</p>
                     <p>Dormitórios: #{imovelControle.imovel.dormitorio}</p>
                     <p>Banheiros: #{imovelControle.imovel.banheiro}</p>
                     <p>Suítes: #{imovelControle.imovel.suite}</p>
                     <p>Garagens: #{imovelControle.imovel.garagem}</p>
                     </div>
-                </div>
+                    <div style="float:left; background: #FFF; padding-bottom: 15px;">
+                    <p:galleria value="#{imovelControle.arquivos}" var="image" panelWidth="500" panelHeight="313">  
+                        <p:graphicImage value="/imagensImoveis/#{image.nome}" alt="dsad" title="sdnsa"/>  
+                    </p:galleria>
+                    </div>
             </div>
         </div>		
         <div id="footer">
