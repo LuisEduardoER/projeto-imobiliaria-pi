@@ -233,6 +233,9 @@ public class ImovelControle {
         imovel = (Imovel) model.getRowData();
         endereco = imovel.getEndereco();
         cep = endereco.getCep();
+        cliente = imovel.getCliente();
+        tipoImovel = imovel.getTipoImovel();
+        status = imovel.getStatus();
         setImovel(imovel);
         return "cadImovel";
     }
@@ -253,6 +256,9 @@ public class ImovelControle {
     private void limpa() {
         imovel = null;
         endereco = null;
+        cliente = null;
+        tipoImovel = null;
+        status = null;
     }
     
     public String novoImovel() {
