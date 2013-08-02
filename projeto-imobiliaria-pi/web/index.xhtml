@@ -97,8 +97,19 @@
                 </div>
                 <div id="imoveisDestaque">
                     <div id="tituloImoveis">
-                        <h2>Imóveis em destaque</h2>
+                    <h2>Imóveis em destaque</h2>
                     </div>
+                    <c:forEach var="imo" items="#{imovelControle.imoveisDestaque}">   
+                        <div id="listaImoveis">
+                            <h:graphicImage value="imagensImoveis/#{imo.arquivos.get(0).nome}" style="padding: 10px 0 10px 0;" width="190" height="170"  />
+                            <p style="font-size: 15px; font-weight:bold; color:#B00000">#{imo.tipoImovel.tipo}</p>
+                            <p>#{imo.endereco.cep.bairro.nome}, #{imo.endereco.cep.bairro.municipio.nome}</p>
+                            <p style="font-size: 19px; font-weight:bold;">R$ #{imo.valor}</p>
+                            <div style="padding:0 10px 30px 0;">
+                            
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>		

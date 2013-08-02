@@ -117,7 +117,7 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
     @Override
     public List<Imovel> imoveisDestaque() throws Exception {
         abreConexao();
-        Query query = session.createQuery("SELECT DISTINCT imo from Imovel imo JOIN FETCH imo.arquivos ORDER BY imo.id LIMIT 6");
+        Query query = session.createQuery("SELECT DISTINCT imo from Imovel imo LIMIT 5");
         List<Imovel> imoveis = query.list();
         session.close();
         return imoveis;
