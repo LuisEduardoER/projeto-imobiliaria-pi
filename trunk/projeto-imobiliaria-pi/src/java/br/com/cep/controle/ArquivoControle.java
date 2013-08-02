@@ -77,7 +77,7 @@ public class ArquivoControle {
         try {  
             arquivo.setNome(event.getFile().getFileName());  
             byte[] conteudo = event.getFile().getContents();  
-            String caminho = "C:\\Users\\Aluno\\Documents\\NetBeansProjects\\trunk\\projeto-imobiliaria-pi\\web\\imagensImoveis\\" + event.getFile().getFileName();  
+            String caminho = "D:\\NetBeansProjects\\projeto-imobiliaria-pi\\web\\imagensImoveis\\" + event.getFile().getFileName();  
             FileOutputStream fos = new FileOutputStream(caminho);  
             fos.write(conteudo);  
             fos.close();  
