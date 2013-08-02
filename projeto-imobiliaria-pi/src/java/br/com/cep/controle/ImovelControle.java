@@ -49,10 +49,15 @@ public class ImovelControle {
     private Cliente cliente;
     private DataModel modelCliente;
     private List<Imovel> imov;
+    private List<Imovel> imveisDestaques;
     private List<Arquivos> arquivos;
 
     public List<Arquivos> getArquivos() {
         return arquivos;
+    }
+
+    public List<Imovel> getImveisDestaques() {
+        return imveisDestaques;
     }
 
     public List<Imovel> getImov() {
@@ -352,11 +357,11 @@ public class ImovelControle {
     public List<Imovel> getImoveisDestaque() {
         imovelDao = new ImovelDAOImp();
         try {
-            imov = imovelDao.imoveisDestaque();
+            imveisDestaques = imovelDao.imoveisDestaque();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
-        return imov;
+        return imveisDestaques;
     }
     
     public void pesquisaCliente() {
