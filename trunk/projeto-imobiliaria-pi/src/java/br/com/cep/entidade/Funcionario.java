@@ -31,6 +31,14 @@ public class Funcionario extends Pessoa {
     @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
     private List<Venda> venda;
 
+    public List<Venda> getVenda() {
+        return venda;
+    }
+
+    public void setVenda(List<Venda> venda) {
+        this.venda = venda;
+    }
+    
     public String getCresci() {
         return cresci;
     }

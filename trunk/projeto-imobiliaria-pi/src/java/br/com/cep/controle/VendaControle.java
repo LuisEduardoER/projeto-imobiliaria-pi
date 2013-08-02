@@ -10,8 +10,6 @@ import br.com.cep.entidade.Funcionario;
 import br.com.cep.entidade.Imovel;
 import br.com.cep.entidade.Venda;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -27,6 +25,7 @@ import javax.faces.model.ListDataModel;
 @SessionScoped
 public class VendaControle {
     private Venda venda;
+    private List<Venda> vendas;
     private VendaDAO vendaDao;
     private DataModel model;
     private DataModel modelFuncionario;
@@ -34,13 +33,30 @@ public class VendaControle {
     private DataModel modelRel;
     private boolean pesquisa = false;
     private Funcionario funcionario;
+    private Funcionario func;
     private Imovel imovel;
+
+    public Funcionario getFunc() {
+        return func;
+    }
+
+    public void setFunc(Funcionario func) {
+        this.func = func;
+    }
     
     public Funcionario getFuncionario() {
         if(funcionario == null){
             funcionario = new Funcionario();
         }
         return funcionario;
+    }
+
+    public List<Venda> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
     }
 
     public DataModel getModelRel() {
@@ -204,15 +220,16 @@ public class VendaControle {
     
     public String pesquisarRel() {
         venda = new Venda();
+        func = new Funcionario();
         pesquisa = false;
         return "geraRelatorio";
     }
     
     public void pesquisaRelatorio() {
         vendaDao = new VendaDAOImp();
-        if(venda.getObservacao() != null){
+        if(func.getCresci() != null){
             try {
-            modelRel = new ListDataModel(vendaDao.procuraVendaPorCresci(venda.getObservacao()));
+            func = vendaDao.procuraVendaPorCresci(func.getCresci());
             } catch(Exception ex) {
                 System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
             }
