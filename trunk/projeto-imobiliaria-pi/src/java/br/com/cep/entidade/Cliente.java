@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 @Entity
 @PrimaryKeyJoinColumn(name="id_pessoa")
 public class Cliente extends Pessoa {
-    @Temporal(TemporalType.TIMESTAMP)       
+    @Temporal(TemporalType.DATE)       
     private Date dataRegistro = new java.util.Date();
 
     public Date getDataRegistro() {

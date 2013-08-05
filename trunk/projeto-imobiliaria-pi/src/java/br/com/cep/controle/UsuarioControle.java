@@ -93,6 +93,7 @@ public class UsuarioControle {
         FacesContext context = FacesContext.getCurrentInstance();
         usuario.setFuncionario(funcionario);
         usuario.setPerfil(perfil);
+        usuario.setEnable(true);
             try {
                 if(usuario.getId() == null){
                     usuarioDao.salva(usuario);
@@ -144,7 +145,7 @@ public class UsuarioControle {
         List<Perfil> perfi = perfDao.listar();
         List<SelectItem> listaCombo = new ArrayList<SelectItem>();
         for (Perfil perf : perfi) {
-            listaCombo.add(new SelectItem(perf.getId(), perf.getNome()));
+            listaCombo.add(new SelectItem(perf.getId(), perf.getDescricao()));
         }
         return listaCombo;
     }

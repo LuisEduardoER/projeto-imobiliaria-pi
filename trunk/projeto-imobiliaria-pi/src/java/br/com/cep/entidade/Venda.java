@@ -25,7 +25,7 @@ public class Venda implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date dataVenda = new java.sql.Date(System.currentTimeMillis());
     private String observacao;
     

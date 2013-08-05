@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/security/spring-security-3.1.xsd">
  
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/sistema/**" access="hasRole('ROLE_FUNC')"/>
+        <intercept-url pattern="/sistema/**" access="hasRole('ROLE_CORRETOR')"/>
         <intercept-url pattern="/administrador/**" access="hasAnyRole('ROLE_FUNC','ROLE_ADM')"/>
         <form-login login-page="/login.faces" authentication-failure-url="/login.faces?erro=true"/>
     </http>
