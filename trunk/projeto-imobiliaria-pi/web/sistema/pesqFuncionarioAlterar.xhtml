@@ -26,17 +26,22 @@
                                 <h:outputText value="Listando Funcionários" />
                             </f:facet>
                             <p:column>
-                                <f:facet name="header">Nome: </f:facet>
+                                <f:facet name="header">Nome </f:facet>
                                 <h:outputText value="#{funcionarioGrid.nome}" />
                             </p:column>
                             <p:column>
-                                <f:facet name="header">CPF: </f:facet>
+                                <f:facet name="header">Função </f:facet>
+                                <h:outputText value="#{funcionarioGrid.funcao.nome}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">CPF </f:facet>
                                 <h:outputText value="#{funcionarioGrid.cpf}" />
                             </p:column>
                             <p:column>
-                                <f:facet name="header">Rua: </f:facet>
+                                <f:facet name="header">Rua </f:facet>
                                 <h:outputText value="#{funcionarioGrid.endereco.cep.logradouro}, " />
-                                <h:outputText value="#{funcionarioGrid.endereco.numero}" />
+                                <h:outputText value="#{funcionarioGrid.endereco.numero}, "/>
+                                <h:outputText value="#{funcionarioGrid.endereco.cep.bairro.nome}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">Alterar</f:facet>

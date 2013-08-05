@@ -22,7 +22,7 @@
                                          required="true" requiredMessage="nome é obrigatório" style="margin-left: 45px;"/>
                             
                             <h:outputText value="Data de nascimento:" />   
-                            <p:calendar value="#{funcionarioControle.funcionario.nascimento}" locale="pt_BR" showButtonPanel="true" navigator="true" id="nascimento" style="margin-left: 45px;"/>
+                            <p:calendar value="#{funcionarioControle.funcionario.nascimento}" locale="pt_BR" yearRange="c-100:c+10" showButtonPanel="true" navigator="true" id="nascimento" style="margin-left: 45px;"/>
                             
                             <h:outputLabel value="Sexo:" />
                             <p:selectOneRadio id="options" 
@@ -56,7 +56,7 @@
                             <h:outputLabel value="Cresci:" />
                             <p:inputText id="cresci" 
                                          value="#{funcionarioControle.funcionario.cresci}" 
-                                         required="true" requiredMessage="cresci é obrigatório" style="margin-left: 45px;"/>
+                                         style="margin-left: 45px;"/>
                             
                             <h:outputLabel value="Salário" />
                             <p:inputText id="salario" 

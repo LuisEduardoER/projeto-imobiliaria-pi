@@ -31,6 +31,10 @@
                                         <h:outputText value="#{funcionarioGrid.nome}" />
                                     </p:column>
                                     <p:column>
+                                        <f:facet name="header">Função</f:facet>
+                                        <h:outputText value="#{funcionarioGrid.funcao.nome}" />
+                                    </p:column>
+                                    <p:column>
                                         <f:facet name="header">CPF</f:facet>
                                         <h:outputText value="#{funcionarioGrid.cpf}" />
                                     </p:column>
@@ -57,12 +61,12 @@
                                         <h:outputText value="Listando Imóvel(s)"/>
                                     </f:facet>
                                     <p:column>
-                                        <f:facet name="header">Id</f:facet>
-                                        <h:outputText value="#{imovelGrid.id}" />
+                                        <f:facet name="header">Código</f:facet>
+                                        <h:outputText value="#{imovelGrid.codigo}" />
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Estado</f:facet>
-                                        <h:outputText value="#{imovelGrid.sala}" />
+                                        <f:facet name="header">Tipo do imóvel</f:facet>
+                                        <h:outputText value="#{imovelGrid.tipoImovel.tipo}" />
                                     </p:column>
                                     <p:column>
                                         <p:commandButton icon="ui-icon-check" title="Selecione um Imóvel" ajax="false"

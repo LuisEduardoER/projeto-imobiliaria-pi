@@ -36,7 +36,8 @@
                             <p:column>
                                 <f:facet name="header">Rua: </f:facet>
                                 <h:outputText value="#{clienteGrid.endereco.cep.logradouro}, " />
-                                <h:outputText value="#{clienteGrid.endereco.numero}" />
+                                <h:outputText value="#{clienteGrid.endereco.numero}, " />
+                                <h:outputText value="#{clienteGrid.endereco.cep.bairro.nome}"/>
                             </p:column>
                             <p:column>
                                 <f:facet name="header">Alterar</f:facet>

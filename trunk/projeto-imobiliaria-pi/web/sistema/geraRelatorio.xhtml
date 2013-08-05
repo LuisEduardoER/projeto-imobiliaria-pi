@@ -40,7 +40,9 @@
                             </p:column>
                             <p:column>
                                 <f:facet name="header">Data da Venda </f:facet>
-                                <h:outputText value="#{relGrid.dataVenda}" />
+                                <h:outputText value="#{relGrid.dataVenda}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
                             </p:column>
                         </p:dataTable>
 

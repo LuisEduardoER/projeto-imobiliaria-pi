@@ -20,27 +20,28 @@
                             <p:inputText id="nome" value="#{clienteControle.cliente.nome}" />
                             <p:commandButton value="Pesquisar" ajax="false" action="#{clienteControle.pesquisaCliente()}" />
                         </h:panelGrid>
-                        <p:dataTable id="gridFuncionario" var="funcionarioGrid" paginator="true"  emptyMessage="Nenhum valor encontrado" value="#{clienteCliente.model}">
+                        <p:dataTable id="gridCliente" var="clienteGrid" paginator="true"  emptyMessage="Nenhum valor encontrado" value="#{clienteControle.model}">
                             <f:facet name="header">
                                 <h2>Alterar</h2>
-                                <h:outputText value="Listando funcionarios" />
+                                <h:outputText value="Listando clientes" />
                             </f:facet>
                             <p:column>
                                 <f:facet name="header">Nome: </f:facet>
-                                <h:outputText value="#{clienteControle.nome}" />
+                                <h:outputText value="#{clienteGrid.nome}" />
                             </p:column>
                             <p:column>
                                 <f:facet name="header">CPF: </f:facet>
-                                <h:outputText value="#{clienteControle.cpf}" />
+                                <h:outputText value="#{clienteGrid.cpf}" />
                             </p:column>
                             <p:column>
                                 <f:facet name="header">Rua: </f:facet>
-                                <h:outputText value="#{clienteControle.endereco.cep.logradouro}, " />
-                                <h:outputText value="#{clienteControle.endereco.numero}" />
+                                <h:outputText value="#{clienteGrid.endereco.cep.logradouro}, " />
+                                <h:outputText value="#{clienteGrid.endereco.numero}, " />
+                                <h:outputText value="#{clienteGrid.endereco.cep.bairro.nome}"/>
                             </p:column>
                             <p:column>
-                                <f:facet name="header">Alterar</f:facet>
-                                <h:commandLink action="#{clienteControle.excluir()}" value="Alterar"/>
+                                <f:facet name="header">Excluir</f:facet>
+                                <h:commandLink action="#{clienteControle.excluir()}" value="Excluir"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>

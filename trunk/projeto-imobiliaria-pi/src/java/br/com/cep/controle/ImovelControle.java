@@ -371,7 +371,6 @@ public class ImovelControle {
             List clientes = endUtil.pesquisaCliente(cliente.getNome());
             modelCliente = new ListDataModel(clientes);
         }
-        limpa();
     }
     
     public void carregaImovel() {
