@@ -22,7 +22,7 @@
                                          required="true" requiredMessage="nome é obrigatório" style="margin-left: 45px;"/>
                             
                             <h:outputText value="Data de nascimento:" />   
-                            <p:calendar value="#{clienteControle.cliente.nascimento}" locale="pt_BR" showButtonPanel="true" navigator="true" id="nascimento" style="margin-left: 45px;"/>
+                            <p:calendar value="#{clienteControle.cliente.nascimento}" locale="pt_BR" yearRange="c-100:c+10" showButtonPanel="true" navigator="true" id="nascimento" style="margin-left: 45px;"/>
                             
                             <h:outputLabel value="Sexo:" />
                             <p:selectOneRadio id="options" 

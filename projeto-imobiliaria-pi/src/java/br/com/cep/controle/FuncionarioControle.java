@@ -148,6 +148,7 @@ public class FuncionarioControle {
         funcionario = (Funcionario) model.getRowData();
         endereco = funcionario.getEndereco();
         cep = endereco.getCep();
+        funcao = funcionario.getFuncao();
         setFuncionario(funcionario);
         return "cadFuncionario";
     }
