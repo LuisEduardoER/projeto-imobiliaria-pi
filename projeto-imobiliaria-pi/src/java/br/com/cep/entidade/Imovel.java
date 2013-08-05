@@ -44,7 +44,7 @@ public class Imovel implements Serializable {
     @Column(nullable = false)
     private String garagem;
     
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date dataCadastro = new java.sql.Date(System.currentTimeMillis());
     
     @Column(nullable = false)
