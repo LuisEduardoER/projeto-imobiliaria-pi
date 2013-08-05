@@ -288,9 +288,6 @@ public class ImovelControle {
         imovelDao = new ImovelDAOImp();
         try {
             imov = imovelDao.todosImoveisCasa();
-            if (!imovel.getCodigo().equals("")) {
-                imov = imovelDao.procuraImovelPorCodigo(imovel.getCodigo());
-            }
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
