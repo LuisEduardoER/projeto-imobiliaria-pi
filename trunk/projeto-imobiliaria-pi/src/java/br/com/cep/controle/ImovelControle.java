@@ -37,7 +37,7 @@ import javax.faces.model.SelectItem;
 @ManagedBean
 @SessionScoped
 public class ImovelControle {
-    
+
     private Imovel imovel;
     private ImovelDAO imovelDao;
     private TipoImovel tipoImovel;
@@ -67,103 +67,103 @@ public class ImovelControle {
     public void setImov(List<Imovel> imov) {
         this.imov = imov;
     }
-    
+
     public DataModel getModelCliente() {
         return modelCliente;
     }
-    
+
     public void setModelCliente(DataModel modelCliente) {
         this.modelCliente = modelCliente;
     }
-    
+
     public ImovelDAO getImovelDao() {
         return imovelDao;
     }
-    
+
     public Cliente getCliente() {
         if (cliente == null) {
             cliente = new Cliente();
         }
         return cliente;
     }
-    
+
     public void setImovelDao(ImovelDAO imovelDao) {
         this.imovelDao = imovelDao;
     }
-    
+
     public Status getStatus() {
         if (status == null) {
             status = new Status();
         }
         return status;
     }
-    
+
     public void setStatus(Status status) {
         this.status = status;
     }
-    
+
     public Endereco getEndereco() {
         if (endereco == null) {
             endereco = new Endereco();
         }
         return endereco;
     }
-    
+
     public Cep getCep() {
         if (cep == null) {
             cep = new Cep();
         }
         return cep;
     }
-    
+
     public void setCep(Cep cep) {
         this.cep = cep;
     }
-    
+
     public DataModel getModel() {
         return model;
     }
-    
+
     public Imovel getImovel() {
         if (imovel == null) {
             imovel = new Imovel();
         }
         return imovel;
     }
-    
+
     public void setImovel(Imovel imovel) {
         this.imovel = imovel;
     }
-    
+
     public TipoImovel getTipoImovel() {
         if (tipoImovel == null) {
             tipoImovel = new TipoImovel();
         }
         return tipoImovel;
     }
-    
+
     public void setTipoImovel(TipoImovel tipoImovel) {
         this.tipoImovel = tipoImovel;
     }
-    
+
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
+
     public boolean isPesquisa() {
         return pesquisa;
     }
-    
+
     public void setPesquisa(boolean pesquisa) {
         this.pesquisa = pesquisa;
     }
-    
+
     public void GerarCodigo() {
         Random gerador = new Random();
         int numero = gerador.nextInt(1000000);
         imovel.setCodigo(Integer.toString(numero));
     }
-    
+
     public String salvar() {
         imovelDao = new ImovelDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
@@ -187,7 +187,7 @@ public class ImovelControle {
         limpa();
         return "index";
     }
-    
+
     public List<SelectItem> getTodosTipoImovel() throws Exception {
         TipoImovelDAO tipImovelDao = new TipoImovelDAOImp();
         List<TipoImovel> tipImovel = tipImovelDao.listar();
@@ -197,7 +197,7 @@ public class ImovelControle {
         }
         return listaCombo;
     }
-    
+
     public List<SelectItem> getTodosStatus() throws Exception {
         StatusDAO statusDao = new StatusDAOImp();
         List<Status> stat = statusDao.listar();
@@ -207,7 +207,7 @@ public class ImovelControle {
         }
         return listaCombo;
     }
-    
+
     public String pesquisar() {
         if (imovel != null) {
             limpa();
@@ -216,6 +216,7 @@ public class ImovelControle {
         pesquisa = false;
         return "pesqImovelAlterar";
     }
+
     public String pesquisarImovelFoto() {
         if (imovel != null) {
             limpa();
@@ -224,7 +225,7 @@ public class ImovelControle {
         pesquisa = false;
         return "pesqArquivoMostrar";
     }
-    
+
     public String pesquisarExcluir() {
         if (imovel != null) {
             limpa();
@@ -233,7 +234,7 @@ public class ImovelControle {
         pesquisa = false;
         return "pesqImovelExcluir";
     }
-    
+
     public String editar() {
         imovel = (Imovel) model.getRowData();
         endereco = imovel.getEndereco();
@@ -244,7 +245,7 @@ public class ImovelControle {
         setImovel(imovel);
         return "cadImovel";
     }
-    
+
     public String excluir() {
         FacesContext context = FacesContext.getCurrentInstance();
         imovel = (Imovel) model.getRowData();
@@ -257,7 +258,7 @@ public class ImovelControle {
         }
         return "index";
     }
-    
+
     private void limpa() {
         imovel = null;
         endereco = null;
@@ -265,13 +266,13 @@ public class ImovelControle {
         tipoImovel = null;
         status = null;
     }
-    
+
     public String novoImovel() {
         imovel = new Imovel();
         pesquisa = false;
         return "cadImovel";
     }
-    
+
     public void pesquisaImovel() {
         imovelDao = new ImovelDAOImp();
         if (imovel.getCodigo() != null) {
@@ -287,12 +288,15 @@ public class ImovelControle {
         imovelDao = new ImovelDAOImp();
         try {
             imov = imovelDao.todosImoveisCasa();
+            if (!imovel.getCodigo().equals("")) {
+                imov = imovelDao.procuraImovelPorCodigo(imovel.getCodigo());
+            }
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
         return imov;
     }
-    
+
     public List<Imovel> getListaImoveisApartamento() {
         imovelDao = new ImovelDAOImp();
         try {
@@ -302,7 +306,7 @@ public class ImovelControle {
         }
         return imov;
     }
-    
+
     public List<Imovel> getListaImoveisComercial() {
         imovelDao = new ImovelDAOImp();
         try {
@@ -312,7 +316,7 @@ public class ImovelControle {
         }
         return imov;
     }
-    
+
     public List<Imovel> getListaTodosImoveis() {
         imovelDao = new ImovelDAOImp();
         try {
@@ -322,7 +326,7 @@ public class ImovelControle {
         }
         return imov;
     }
-    
+
     public List<Imovel> getListaImoveisTerreno() {
         imovelDao = new ImovelDAOImp();
         try {
@@ -332,18 +336,18 @@ public class ImovelControle {
         }
         return imov;
     }
-    
+
     public String imovelSelecionado(Long id) {
         imovelDao = new ImovelDAOImp();
         try {
             imovel = imovelDao.imovelSelecionado(id);
-            arquivos =  imovel.getArquivos();
+            arquivos = imovel.getArquivos();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
         return "imovelSelecionado";
     }
-    
+
     public List<Imovel> getListaImoveisSitio() {
         imovelDao = new ImovelDAOImp();
         try {
@@ -352,8 +356,8 @@ public class ImovelControle {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
         return imov;
-    }   
-    
+    }
+
     public List<Imovel> getImoveisDestaque() {
         imovelDao = new ImovelDAOImp();
         try {
@@ -363,7 +367,7 @@ public class ImovelControle {
         }
         return imveisDestaques;
     }
-    
+
     public void pesquisaCliente() {
         EnderecoUtil endUtil;
         if (cliente.getNome() != null) {
@@ -372,12 +376,12 @@ public class ImovelControle {
             modelCliente = new ListDataModel(clientes);
         }
     }
-    
+
     public void carregaImovel() {
         cliente = (Cliente) modelCliente.getRowData();
         pesquisa = false;
     }
-    
+
     public void pesquisaCep() {
         CepDAO cepDao = new CepDAOImp();
         if (cep.getCep() != null) {
