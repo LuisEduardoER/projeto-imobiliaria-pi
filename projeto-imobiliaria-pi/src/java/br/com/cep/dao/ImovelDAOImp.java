@@ -122,4 +122,14 @@ public class ImovelDAOImp extends BaseDAOImp<Imovel, Long> implements ImovelDAO{
         session.close();
         return imoveis;
     }
+
+    @Override
+    public List<Imovel> buscarPorCodigo(String codigo) throws Exception {
+        abreConexao();
+        Query query = session.createQuery("SELECT DISTINCT imo from Imovel imo JOIN FETCH imo.arquivos WHERE imo.codigo like :codigo");
+        query.setString("codigo", "%" +codigo+ "%");
+        List<Imovel> imoveis = query.list();
+        session.close();
+        return imoveis;
+    }
 }

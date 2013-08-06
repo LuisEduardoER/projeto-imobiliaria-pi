@@ -50,8 +50,13 @@ public class ImovelControle {
     private DataModel modelCliente;
     private List<Imovel> imov;
     private List<Imovel> imveisDestaques;
+    private List<Imovel> buscaPorCodigo;
     private List<Arquivos> arquivos;
 
+    public List<Imovel> getBuscaPorCodigo() {
+        return buscaPorCodigo;
+    }
+    
     public List<Arquivos> getArquivos() {
         return arquivos;
     }
@@ -285,6 +290,17 @@ public class ImovelControle {
         }
     }
     
+    public void buscaPorCodigo() {
+        imovelDao = new ImovelDAOImp();
+        if (imovel.getCodigo() != null) {
+            try {
+                imov = imovelDao.buscarPorCodigo(imovel.getCodigo());
+            } catch (Exception ex) {
+                System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
+            }
+        }
+    }
+    
     public List<Imovel> getListaImoveisCasa() {
         imovelDao = new ImovelDAOImp();
         try {
@@ -309,6 +325,7 @@ public class ImovelControle {
         imovelDao = new ImovelDAOImp();
         try {
             imov = imovelDao.todosImoveisComercial();
+            buscaPorCodigo();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
@@ -319,6 +336,7 @@ public class ImovelControle {
         imovelDao = new ImovelDAOImp();
         try {
             imov = imovelDao.listaTodosImoveis();
+            buscaPorCodigo();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
