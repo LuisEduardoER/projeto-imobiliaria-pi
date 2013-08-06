@@ -36,6 +36,13 @@
                 <div id="tituloImoveis">
                     <h2>Imóveis</h2>
                 </div>
+                <h:form>
+                        <h:panelGrid style="margin-bottom: 50px;" columns="3">
+                            <h:outputLabel style="margin-right: 5px;font-weight:bold; font-size: 15px; " value="Código do imóvel" />
+                            <p:inputText style="margin-right: 5px;" id="codigo" value="#{imovelControle.imovel.codigo}" />
+                            <p:commandButton value="Pesquisar" ajax="false" action="#{imovelControle.buscaPorCodigo()}" />
+                        </h:panelGrid>
+                </h:form>
                 <c:forEach var="imo" items="#{imovelControle.listaTodosImoveis}">   
                     <div id="listaImoveis">
                         <h:graphicImage value="imagensImoveis/#{imo.arquivos.get(0).nome}" style="padding: 10px 0 10px 0;" width="190" height="170"  />
