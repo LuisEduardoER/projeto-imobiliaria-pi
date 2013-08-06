@@ -35,6 +35,10 @@
                                         <h:outputText value="#{funcionarioGrid.cpf}" />
                                     </p:column>
                                     <p:column>
+                                        <f:facet name="header">Função</f:facet>
+                                        <h:outputText value="#{funcionarioGrid.funcao.nome}" />
+                                    </p:column>
+                                    <p:column>
                                         <p:commandButton icon="ui-icon-check" title="Selecione um Municipio" ajax="false" action="#{usuarioControle.carregaFuncionario()}" onclick="dlg.hide();"/>
                                     </p:column>
                                 </p:dataTable>

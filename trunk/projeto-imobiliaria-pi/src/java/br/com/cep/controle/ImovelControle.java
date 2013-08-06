@@ -172,9 +172,9 @@ public class ImovelControle {
         imovel.setTipoImovel(tipoImovel);
         imovel.setStatus(status);
         imovel.setCliente(cliente);
-        GerarCodigo();
         try {
             if (imovel.getId() == null) {
+                GerarCodigo();
                 imovelDao.salva(imovel);
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvo com Sucesso!", ""));
             } else {
@@ -261,8 +261,9 @@ public class ImovelControle {
 
     private void limpa() {
         imovel = null;
-        endereco = null;
         cliente = null;
+        endereco = null;
+        cep = null;
         tipoImovel = null;
         status = null;
     }
@@ -388,6 +389,5 @@ public class ImovelControle {
                 System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
             }
         }
-        limpa();
     }
 }
