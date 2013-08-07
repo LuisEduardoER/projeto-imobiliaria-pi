@@ -271,6 +271,8 @@ public class ImovelControle {
         cep = null;
         tipoImovel = null;
         status = null;
+        imov = null;
+        buscaPorCodigo = null;
     }
 
     public String novoImovel() {
@@ -324,8 +326,7 @@ public class ImovelControle {
     public List<Imovel> getListaImoveisComercial() {
         imovelDao = new ImovelDAOImp();
         try {
-            imov = imovelDao.todosImoveisComercial();
-            buscaPorCodigo();
+             imov = imovelDao.todosImoveisComercial();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
