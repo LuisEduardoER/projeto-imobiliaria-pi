@@ -271,8 +271,6 @@ public class ImovelControle {
         cep = null;
         tipoImovel = null;
         status = null;
-        imov = null;
-        buscaPorCodigo = null;
     }
 
     public String novoImovel() {
@@ -303,6 +301,18 @@ public class ImovelControle {
         }
     }
     
+    public List<Imovel> getListaTodosImoveis() {
+        imovelDao = new ImovelDAOImp();
+        try {
+            imov = imovelDao.listaTodosImoveis();
+            buscaPorCodigo();
+        } catch (Exception ex) {
+            System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
+        }
+        return imov;
+    }
+    
+    
     public List<Imovel> getListaImoveisCasa() {
         imovelDao = new ImovelDAOImp();
         try {
@@ -327,17 +337,6 @@ public class ImovelControle {
         imovelDao = new ImovelDAOImp();
         try {
              imov = imovelDao.todosImoveisComercial();
-        } catch (Exception ex) {
-            System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
-        }
-        return imov;
-    }
-
-    public List<Imovel> getListaTodosImoveis() {
-        imovelDao = new ImovelDAOImp();
-        try {
-            imov = imovelDao.listaTodosImoveis();
-            buscaPorCodigo();
         } catch (Exception ex) {
             System.out.println("Erro ao pesquisar todos os dados" + ex.getMessage());
         }
